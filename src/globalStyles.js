@@ -53,13 +53,14 @@ export const typeColor = {
   bug: "#a8b820",
   normal: "#a8a878",
   poison: "#a040a0",
-  electric: "f8d030",
+  electric: "#f8d030",
   ground: "#e0c068",
-  fair: "#ee99ac",
+  fairy: "#ee99ac",
   fighting: "#c03028",
   psychic: "#f85888",
   rock: "#b8a038",
   ghost: "#705898",
   ice: "#98d8d8",
   dragon: "#7038f8",
+  flying: "#A98FF3"
 };

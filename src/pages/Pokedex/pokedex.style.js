@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
-import { Container } from "../../globalStyles";
-import { mediaQuery } from "../../globalStyles";
+import { Container, mediaQuery } from "../../globalStyles";
 
 const Wrapper = styled(Container)`
   justify-content: center;
@@ -33,7 +32,7 @@ const PageButton = styled.button`
 const ListWrapper = styled.div`
   display: grid;
   grid-gap: 0.8em;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   ${mediaQuery[0]} {
     grid-template-columns: repeat(2, 1fr);
   }

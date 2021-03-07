@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 
-import {capitalize} from '../../utils';
+import TypeLabel from "../TypeLabel";
+import { capitalize } from "../../utils";
 import { getPokemonByUrl } from "../../api/restApi";
 import {
   CardWrapper,
   InfoWrapper,
+  LabelWrapper,
   ImageWrapper,
   Image,
   Title,
@@ -20,7 +22,7 @@ export default function Card({ listData, url }) {
 
   const getData = async () => {
     setIsLoading(true);
-    setData([]);
+    setData({});
     let pokemonsData = await getPokemonByUrl(url);
     setData(pokemonsData);
     setIsLoading(false);
@@ -46,9 +48,12 @@ export default function Card({ listData, url }) {
             <Image src={`${imageUrl}/${data.id}.png`} alt={`${data.name}`} />
           </ImageWrapper>
           {/* <Title>{`${data.name}`}</Title> */}
-          {data.types && (
-            <Desc>{`${data.types.map((type, index) => type.type.name)}`}</Desc>
-          )}
+          <LabelWrapper>
+            {data.types &&
+              data.types.map((type, index) => (
+                <TypeLabel typeName={type.type.name} />
+              ))}
+          </LabelWrapper>
         </div>
       ) : data.name ? (
         <Desc>

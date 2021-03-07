@@ -80,4 +80,18 @@ const Title = styled.p``;
 
 const Desc = styled.p``;
 
-export { CardWrapper, InfoWrapper, ImageWrapper, Image, Title, Desc };
+const LabelWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-text: center;
+`;
+
+export {
+  LabelWrapper,
+  CardWrapper,
+  InfoWrapper,
+  ImageWrapper,
+  Image,
+  Title,
+  Desc,
+};

@@ -3,6 +3,7 @@ import Skeleton from "react-loading-skeleton";
 import { useParams, NavLink, useHistory } from "react-router-dom";
 
 import { getPokemonById } from "../../api/restApi";
+import TypeLabel from "../../components/TypeLabel";
 import { AppContext } from "../../context/AppContext";
 import { catchPokemon, capitalize } from "../../utils";
 
@@ -18,21 +19,27 @@ import {
   Wrapper,
   DescWrapper,
   Name,
-  SkeletonWrap,
+  ULists,
 } from "./pokemonDetail.style";
 
 export default function PokemonDetail() {
   const history = useHistory();
+  const { isMobile } = useContext(AppContext);
   const { id } = useParams();
   const [currentId, setCurrentId] = useState(id);
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState({});
+  const [othersData, setOthersData] = useState({});
 
   const requestData = async (dataId) => {
     setIsLoading(true);
-    setData([]);
+    setData({});
+    setOthersData({});
     let pokemonsData = await getPokemonById(dataId);
+    let prevResult = await getPokemonById(parseInt(dataId) - 1);
+    let nextResult = await getPokemonById(parseInt(dataId) + 1);
     setData(pokemonsData);
+    setOthersData({ prevData: prevResult, nextData: nextResult });
     setIsLoading(false);
   };
 
@@ -60,6 +67,7 @@ export default function PokemonDetail() {
     "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon";
 
   console.log(data);
+  console.log(data.types);
 
   return (
     <Wrapper>
@@ -77,14 +85,14 @@ export default function PokemonDetail() {
             history.push(`${handleNav("prev", parseInt(id))}`);
           }}
         >
-          Prev
+          &#171; {othersData.prevData && !isMobile && othersData.prevData.name}
         </NavButton>
         <DetailWrapper>
           <ImageWrapper>
             {!isLoading ? (
               <Name>{`#${data.id} ${capitalize(data.name)}`}</Name>
             ) : (
-              <Skeleton height={20} width={200} />
+              <Skeleton style={{ margin: "15px" }} height={20} width={200} />
             )}
             {!isLoading ? (
               <>
@@ -97,7 +105,7 @@ export default function PokemonDetail() {
                     catchPokemon(data);
                   }}
                 >
-                  CATCH
+                  <span>CATCH</span>
                 </CatchButton>
               </>
             ) : (
@@ -107,29 +115,40 @@ export default function PokemonDetail() {
           <DescWrapper>
             {!isLoading ? (
               <>
-                <Desc>{`Height: ${data.height}`}</Desc>
-                <Desc>{`Weight: ${data.weight}`}</Desc>
+                <Desc>{`Height: ${data.height} m`}</Desc>
+                <Desc>{`Weight: ${data.weight} Kg`}</Desc>
                 {data.abilities && (
-                  <Desc>{`abilites: ${data.abilities.map(
-                    (item, index) => item.ability.name
-                  )}`}</Desc>
+                  <ULists>
+                    Abilites:
+                    {data.abilities.map((item, index) => (
+                      <li
+                        style={{
+                          listStyleType: "circle",
+                          listStylePosition: "inside",
+                        }}
+                      >
+                        {item.ability.name}
+                      </li>
+                    ))}
+                  </ULists>
                 )}
-                {data.types && (
-                  <Desc>{`type: ${data.types.map(
-                    (type, index) => type.type.name
-                  )}`}</Desc>
-                )}
+                {data.types &&
+                  data.types.map((type, index) => (
+                    <Desc style={{ maxWidth: "26%"}}>
+                      <TypeLabel typeName={type.type.name} />
+                    </Desc>
+                  ))}
               </>
             ) : (
               <Skeleton
                 style={{
                   display: "flex",
                   flexDirection: "row",
-                  marginTop: "8px",
+                  margin: "12px 0  0 10px",
                 }}
                 height={20}
                 width={200}
-                count={3}
+                count={4}
               />
             )}
           </DescWrapper>
@@ -139,7 +158,7 @@ export default function PokemonDetail() {
             history.push(`${handleNav("next", parseInt(id))}`);
           }}
         >
-          Next
+          {othersData.nextData && !isMobile && othersData.nextData.name} &#187;
         </NavButton>
       </InnerWrapper>
     </Wrapper>
