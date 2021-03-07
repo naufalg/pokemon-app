@@ -1,34 +1,32 @@
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
+import { Skeleton } from "react-loading-skeleton";
 
 import { getPokemonById } from "../api/restApi";
 
 import Card from "./Card";
 import { mediaQuery } from "../globalStyles";
 
-const ListWrapper = styled.div`
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(1, 1fr);
-  ${mediaQuery[1]} {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  ${mediaQuery[2]} {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  ${mediaQuery[3]} {
-    grid-template-columns: repeat(5, 1fr);
-  }
+const ListWrapper = styled.div``;
+
+const Bottom = styled.div`
+  height: 100px;
+  width: 100%;
 `;
 
 export default function PokemonList({ listData }) {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isFetching, setIsFetching] = useState(false);
+  const [page, setPage] = useState(1);
 
   console.log(listData);
   return (
     <ListWrapper>
-      {listData &&
-        listData.map((item, idx) => <Card key={idx} url={item.url} />)}
+      {listData[0].name !== undefined > 0 ? (
+        listData.map((item, idx) => <Card key={idx} url={item.url} />)
+      ) : (
+        <Skeleton />
+      )}
+      <Bottom />
     </ListWrapper>
   );
 }
