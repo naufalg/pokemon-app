@@ -1,15 +1,26 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { mediaQuery } from "../globalStyles";
 
 const Wrapper = styled.div`
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0%;
+  left: 0%;
+  // transform: translate(-50%, -50%);
+  z-index: 900;
+  box-shadow: inset 0px 0px 0 2000px rgba(0, 0, 0, 0.5);
+  min-height: 100vh;
+  min-width: 100vw;
 `;
 
 const Pokeball = styled.div`
   position: relative;
+  top: 30vh;
+  left: 30vw;
+  ${mediaQuery[1]} {
+    top: 40vh;
+    left: 40vw;
+  }
   width: 200px;
   height: 200px;
   background: #fff;

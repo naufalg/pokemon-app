@@ -76,7 +76,6 @@ export default function MyPokemonDetail() {
           history.push("/my-pokemon");
         }}
       />
-      <Title></Title>
       <br />
       {data && (
         <InnerWrapper>
@@ -123,13 +122,13 @@ export default function MyPokemonDetail() {
                 <Skeleton height={150} width={250} />
               )}
             </ImageWrapper>
-            <DescWrapper>
-              {!isLoading ? (
+            {!isLoading ? (
+              <DescWrapper>
                 <>
                   <Desc>{`Height: ${data.height}`}</Desc>
                   <Desc>{`Weight: ${data.weight}`}</Desc>
                   {data.abilities && (
-                    <ULists style={{ color: "white" }}>
+                    <ULists>
                       Abilites:
                       {data.abilities.map((item, index) => (
                         <li
@@ -152,19 +151,19 @@ export default function MyPokemonDetail() {
                       ))}
                   </TypeWrapper>
                 </>
-              ) : (
-                <Skeleton
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    margin: "12px 0  0 10px",
-                  }}
-                  height={20}
-                  width={200}
-                  count={4}
-                />
-              )}
-            </DescWrapper>
+              </DescWrapper>
+            ) : (
+              <Skeleton
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  margin: "12px 0  0 10px",
+                }}
+                height={20}
+                width={200}
+                count={4}
+              />
+            )}
           </DetailWrapper>
           {myPokemon.length - 1 === parseInt(idx) ? (
             <div></div>

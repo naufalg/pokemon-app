@@ -29,7 +29,7 @@ const NavButton = styled.button`
   }
   font-family: "Press Start 2p";
   text-align: center;
-  font-size: 30pt;
+  font-size: 20pt;
   display: inline-block;
   margin: 5px;
   font-weight: bold;

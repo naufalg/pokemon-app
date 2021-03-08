@@ -30,10 +30,10 @@ export default function PokemonDetail() {
   const history = useHistory();
   const { isMediumSize } = useContext(AppContext);
   const { id } = useParams();
-  const [currentId, setCurrentId] = useState(id);
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState({});
   const [othersData, setOthersData] = useState({});
+  const [showPokeball, setShowPokeball] = useState(false);
 
   const requestData = async (dataId) => {
     setIsLoading(true);
@@ -67,8 +67,10 @@ export default function PokemonDetail() {
     }
   };
 
-  const handlePokeball = () => {
-    return <PokeballDrop />;
+  const handleCatch = (data, setShowPokeball) => {
+    setShowPokeball(true);
+    setTimeout(setShowPokeball(false), 3000);
+    setTimeout(catchPokemon(data, setShowPokeball), 4000);
   };
 
   const imageUrl =
@@ -77,9 +79,11 @@ export default function PokemonDetail() {
   console.log(data);
   console.log(data.types);
 
+  console.log(showPokeball);
+
   return (
     <Wrapper>
-      <br/>
+      <br />
       <BsBackspaceFill
         onClick={() => {
           history.push("/pokedex");
@@ -111,7 +115,9 @@ export default function PokemonDetail() {
                 />
                 <CatchButton
                   onClick={() => {
-                    catchPokemon(data, handlePokeball);
+                    setShowPokeball(true);
+                    setTimeout(setShowPokeball(false), 3000);
+                    setTimeout(catchPokemon(data, setShowPokeball), 4000);
                   }}
                 >
                   <span>CATCH</span>
@@ -120,15 +126,22 @@ export default function PokemonDetail() {
             ) : (
               <Skeleton height={150} width={250} />
             )}
+            {showPokeball && <PokeballDrop />}
           </ImageWrapper>
-          <DescWrapper>
-            {!isLoading ? (
+          {!isLoading ? (
+            <DescWrapper>
               <>
-                <Desc>{`Height: ${data.height} m`}</Desc>
-                <Desc>{`Weight: ${data.weight} Kg`}</Desc>
+                <Desc>
+                  <b>Height:</b> &nbsp;
+                  {data.height} m
+                </Desc>
+                <Desc>
+                  <b>Weight:</b> &nbsp;
+                  {data.weight} Kg
+                </Desc>
                 {data.abilities && (
                   <ULists>
-                    Abilites:
+                    <b>Abilites:</b>
                     {data.abilities.map((item, index) => (
                       <li
                         style={{
@@ -148,19 +161,19 @@ export default function PokemonDetail() {
                     ))}
                 </TypeWrapper>
               </>
-            ) : (
-              <Skeleton
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  margin: "12px 0  0 10px",
-                }}
-                height={20}
-                width={200}
-                count={4}
-              />
-            )}
-          </DescWrapper>
+            </DescWrapper>
+          ) : (
+            <Skeleton
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                margin: "12px 0  0 10px",
+              }}
+              height={20}
+              width={200}
+              count={4}
+            />
+          )}
         </DetailWrapper>
         <NavButton
           onClick={() => {

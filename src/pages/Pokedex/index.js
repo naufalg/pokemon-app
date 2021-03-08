@@ -64,17 +64,22 @@ function Pokedex() {
   console.log("page", page);
   console.log("limit", limit);
   console.log("offset", offset);
-  // console.log("listItem", listItem);
+  console.log("listItem", listItem);
 
   return (
     <Wrapper>
-      <br/>
+      <br />
       <NavLink to="/">
         <BsBackspaceFill style={{ color: "white" }} />
       </NavLink>
       <TitleSection>
         <h2>Pokédex</h2>
-        {myPokemon && <h4>you have {myPokemon.length} pokemon</h4>}
+        <br/>
+        {myPokemon && (
+          <NavLink to="/my-pokemon">
+            <h4>you have {myPokemon.length} pokemon{myPokemon.length>1 && "s"}</h4>
+          </NavLink>
+        )}
       </TitleSection>
       <ListWrapper>
         {listItem ? (

@@ -52,6 +52,8 @@ const ImageWrapper = styled.div`
 
 const Name = styled.p`
   align-text: center;
+  font-family: "VT323", monospace;
+  font-size: 1.5em;
 `;
 
 const Image = styled.img`
@@ -79,8 +81,19 @@ const DescWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 200px;
-  padding: 0 0 0 10px;
+  padding: 15px;
   margin-top: 15px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: 200ms;
+  :hover {
+    box-shadow: 0 8px 40px 2px rgba(31, 38, 135, 0.47);
+  }
+  
   ${mediaQuery[2]} {
     width: 210px;
   }

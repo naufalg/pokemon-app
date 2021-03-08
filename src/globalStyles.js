@@ -39,7 +39,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 body{
-  font-family: 'Barlow Semi Condensed', sans-serif;
+  font-family: 'Dosis', sans-serif;
   // font-family: 'Archivo', sans-serif;
 }
 .hidden {

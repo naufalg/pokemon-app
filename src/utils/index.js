@@ -10,13 +10,12 @@ const addPokemon = (pokemonData) => {
   }
 };
 
-export const catchPokemon = (pokemonData, showPokeball) => {
+export const catchPokemon = (pokemonData) => {
   const probabilty = Math.random();
-  showPokeball();
   if (probabilty < 0.5) {
-    alert(`${probabilty}  failed`);
+    alert(`failed`);
   } else {
-    alert(`${probabilty},  you catch it!`);
+    alert(`Congratulations! you catch it!`);
     const pokemonNickname = prompt(`add nickname to your pokemon!`);
     if (pokemonNickname) {
       addPokemon({
