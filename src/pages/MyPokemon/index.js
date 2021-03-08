@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { BsBackspaceFill } from "react-icons/bs";
 
 import { AppContext } from "../../context/AppContext";
 import { globalUrl } from "../../api/restApi";
 import { CardMyPokemon } from "../../components";
-import { Wrapper, ListWrapper } from "./myPokemon.style";
+import { Wrapper, ListWrapper, Title } from "./myPokemon.style";
 
 export default function MyPokemon() {
   const getMyPokemon = JSON.parse(localStorage.getItem("myPokemon"));
@@ -12,10 +13,14 @@ export default function MyPokemon() {
 
   return (
     <Wrapper>
-      <NavLink to="/">
-        <button>Back</button>
+      <br />
+      <NavLink style={{ textAlign: "left" }} to="/">
+        <BsBackspaceFill style={{ color: "white"}} />
       </NavLink>
-      <p>My Pokemon</p>
+      <Title>
+        My Pokemon <br /> You have {getMyPokemon.length} pokemon(s)
+      </Title>
+      <br />
       <ListWrapper>
         {getMyPokemon ? (
           getMyPokemon.map((item, idx) => (

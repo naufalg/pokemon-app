@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext, lazy, Suspense } from "react";
 import { NavLink } from "react-router-dom";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import Skeleton from "react-loading-skeleton";
+import { BsBackspaceFill } from "react-icons/bs";
 import { getPokemonsByPage, globalUrl } from "../../api/restApi";
 
 import { AppContext } from "../../context/AppContext";
@@ -44,7 +45,6 @@ function Pokedex() {
       let pokemonsData = await getPokemonsByPage(page, limit);
       setPage(page + 1);
       setOffset(offset + limit);
-      setLimit(20);
       setListItem(() => [...listItem, ...pokemonsData.results]);
     }, 500);
   };
@@ -60,15 +60,16 @@ function Pokedex() {
   };
 
   // console.log("isFetching", isFetching);
-  // console.log("page", page);
-  // console.log("limit", limit);
-  // console.log("offset", offset);
+  console.log("page", page);
+  console.log("limit", limit);
+  console.log("offset", offset);
   // console.log("listItem", listItem);
 
   return (
     <Wrapper>
+      <br/>
       <NavLink to="/">
-        <NavButton>Back</NavButton>
+        <BsBackspaceFill style={{ color: "white" }} />
       </NavLink>
       <TitleSection>
         <h2>Pokédex</h2>

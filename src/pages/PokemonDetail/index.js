@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import Skeleton from "react-loading-skeleton";
 import { useParams, NavLink, useHistory } from "react-router-dom";
 
+import PokeballDrop from "../../components/PokeballDrop";
 import { getPokemonById } from "../../api/restApi";
 import TypeLabel from "../../components/TypeLabel";
 import { AppContext } from "../../context/AppContext";
@@ -20,11 +21,12 @@ import {
   DescWrapper,
   Name,
   ULists,
+  TypeWrapper,
 } from "./pokemonDetail.style";
 
 export default function PokemonDetail() {
   const history = useHistory();
-  const { isMobile } = useContext(AppContext);
+  const { isMediumSize } = useContext(AppContext);
   const { id } = useParams();
   const [currentId, setCurrentId] = useState(id);
   const [isLoading, setIsLoading] = useState(false);
@@ -63,6 +65,10 @@ export default function PokemonDetail() {
     }
   };
 
+  const handlePokeball = () => {
+    return <PokeballDrop />;
+  };
+
   const imageUrl =
     "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon";
 
@@ -71,13 +77,13 @@ export default function PokemonDetail() {
 
   return (
     <Wrapper>
-      <div
+      <BackButton
         onClick={() => {
           history.push("/pokedex");
         }}
       >
-        <BackButton>back</BackButton>
-      </div>
+        back
+      </BackButton>
       <br />
       <InnerWrapper>
         <NavButton
@@ -85,7 +91,8 @@ export default function PokemonDetail() {
             history.push(`${handleNav("prev", parseInt(id))}`);
           }}
         >
-          &#171; {othersData.prevData && !isMobile && othersData.prevData.name}
+          &#171;{" "}
+          {othersData.prevData && !isMediumSize && othersData.prevData.name}
         </NavButton>
         <DetailWrapper>
           <ImageWrapper>
@@ -102,7 +109,7 @@ export default function PokemonDetail() {
                 />
                 <CatchButton
                   onClick={() => {
-                    catchPokemon(data);
+                    catchPokemon(data, handlePokeball);
                   }}
                 >
                   <span>CATCH</span>
@@ -132,12 +139,12 @@ export default function PokemonDetail() {
                     ))}
                   </ULists>
                 )}
-                {data.types &&
-                  data.types.map((type, index) => (
-                    <Desc style={{ maxWidth: "26%"}}>
+                <TypeWrapper>
+                  {data.types &&
+                    data.types.map((type, index) => (
                       <TypeLabel typeName={type.type.name} />
-                    </Desc>
-                  ))}
+                    ))}
+                </TypeWrapper>
               </>
             ) : (
               <Skeleton
@@ -158,7 +165,8 @@ export default function PokemonDetail() {
             history.push(`${handleNav("next", parseInt(id))}`);
           }}
         >
-          {othersData.nextData && !isMobile && othersData.nextData.name} &#187;
+          {othersData.nextData && !isMediumSize && othersData.nextData.name}{" "}
+          &#187;
         </NavButton>
       </InnerWrapper>
     </Wrapper>

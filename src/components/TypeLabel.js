@@ -6,7 +6,7 @@ import { typeColor, mediaQuery } from "../globalStyles";
 const LabelWrapper = styled.span`
   font-family: "VT323", monospace;
   text-transform: uppercase;
-  display: flex;
+  display: inline;
   padding: 2px 5px;
   border-radius: 5px;
   margin-right: 3px;
@@ -16,10 +16,12 @@ const LabelWrapper = styled.span`
   &:last-child {
     margin-right: 0px;
   }
+  ${mediaQuery[2]} {
+  }
+  z-index: 10;
 `;
 
 export default function TypeLabel({ typeName }) {
-  console.log(typeName);
   return (
     <LabelWrapper
       style={{ color: "white", backgroundColor: typeColor[`${typeName}`] }}

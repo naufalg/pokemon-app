@@ -77,11 +77,11 @@ const Image = styled.img`
 const DescWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 200px;
   padding: 0 0 0 10px;
   margin-top: 15px;
-  ${mediaQuery[1]} {
-    margin-top: 0;
+  ${mediaQuery[2]} {
+    width: 210px;
   }
 `;
 
@@ -90,6 +90,11 @@ const Desc = styled.p`
   &:first-child {
     margin-top: 0px;
   }
+`;
+
+const TypeWrapper = styled.div`
+  margin-top: 10px;
+  display: inline;
 `;
 
 const ULists = styled.ul`
@@ -101,6 +106,7 @@ const ULists = styled.ul`
 
 const CatchButton = styled.button`
   padding: 10px 40px;
+  border-radius: 40px;
   font-family: "Nunito", sans-serif;
   font-size: 22px;
   text-transform: uppercase;
@@ -175,4 +181,5 @@ export {
   Name,
   SkeletonWrap,
   ULists,
+  TypeWrapper,
 };

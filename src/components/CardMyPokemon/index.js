@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
+import Skeleton from "react-loading-skeleton";
 
 import { getPokemonByUrl } from "../../api/restApi";
+import TypeLabel from "../TypeLabel";
+import { capitalize } from "../../utils";
 import {
   Desc,
   Title,
@@ -9,6 +12,7 @@ import {
   ImageWrapper,
   InfoWrapper,
   CardWrapper,
+  LabelWrapper,
 } from "./cardMyPokemon.style";
 
 export default function Card({ passData, url, index }) {
@@ -42,28 +46,27 @@ export default function Card({ passData, url, index }) {
       {data ? (
         <div>
           <Title>
-            {`#${data.id} ${data.name}`}
+            {`#${data.id} ${capitalize(data.name)}`}
             {passData.nickname && ` "${passData.nickname}"`}
           </Title>
           <ImageWrapper>
             <Image src={`${imageUrl}/${data.id}.png`} alt={`${data.name}`} />
           </ImageWrapper>
-          {data.types && (
-            <Desc>{`${data.types.map((type, index) => type.type.name)}`}</Desc>
-          )}
-          {/* {data.abilities && (
-            <Desc>
-              Abilites: <br />{" "}
-              {`${data.abilities.map((item, index) => item.ability.name)}`}
-            </Desc>
-          )} */}
+          <LabelWrapper>
+            {data.types &&
+              data.types.map((type, index) => (
+                <TypeLabel key={index} typeName={type.type.name} />
+              ))}
+          </LabelWrapper>
         </div>
-      ) : (
+      ) : data.name ? (
         <Desc>
           Pokemon Not Found
           <br />
           Team Rocket raiding the server
         </Desc>
+      ) : (
+        <Skeleton />
       )}
     </CardWrapper>
   );

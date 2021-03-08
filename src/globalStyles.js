@@ -44,6 +44,14 @@ body{
 .hidden {
   visibility:hidden;
 }
+.react-icons {
+  vertical-align: middle;
+  font-size:1.2em;
+  transition: 150ms;
+  &:hover {
+    filter: brightness(80%)
+  }
+}
 `;
 
 export const typeColor = {
@@ -62,5 +70,5 @@ export const typeColor = {
   ghost: "#705898",
   ice: "#98d8d8",
   dragon: "#7038f8",
-  flying: "#A98FF3"
+  flying: "#A98FF3",
 };

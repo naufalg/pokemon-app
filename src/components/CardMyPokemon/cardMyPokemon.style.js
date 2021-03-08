@@ -23,6 +23,7 @@ const CardWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 10px;
   padding: 10px 5px;
   background: rgba(255, 255, 255, 0.25);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -38,15 +39,13 @@ const CardWrapper = styled.div`
   animation-fill-mode: forwards;
 
   &:hover {
-    z-index: 100;
+    z-index: 1;
     -webkit-animation: scale 150ms linear;
     -moz-animation: scale 150ms linear;
     animation: scale 150ms linear;
     transform-origin: 50% 50%;
     animation-fill-mode: forwards;
     cursor: pointer;
-    box-shadow: 0 8px 40px 0 rgba(31, 38, 135, 0.47);
-
   }
 
   @keyframes scale {
@@ -54,7 +53,7 @@ const CardWrapper = styled.div`
       transform: scale(1);
     }
     100% {
-      transform: scale(1.1);
+      transform: scale(1.08);
       -webkit-box-shadow: 10px 10px 60px 10px rgba(0, 0, 0, 0.1);
       -moz-box-shadow: 10px 10px 60px 10px rgba(0, 0, 0, 0.1);
       box-shadow: 10px 10px 60px 10px rgba(0, 0, 0, 0.1);
@@ -63,7 +62,7 @@ const CardWrapper = styled.div`
 
   @keyframes scaledown {
     0% {
-      transform: scale(1.1);
+      transform: scale(1.08);
     }
     100% {
       transform: scale(1);
@@ -78,11 +77,27 @@ const Image = styled.img`
 `;
 
 const Title = styled.p`
-  text-align: left;
+  text-align: center;
+  font-family: "VT323", monospace;
+
 `;
 
 const Desc = styled.p`
-  text-align: left;
+  text-align: center;
 `;
 
-export { Desc, Title, Image, ImageWrapper, InfoWrapper, CardWrapper };
+const LabelWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-text: center;
+`;
+
+export {
+  LabelWrapper,
+  Desc,
+  Title,
+  Image,
+  ImageWrapper,
+  InfoWrapper,
+  CardWrapper,
+};

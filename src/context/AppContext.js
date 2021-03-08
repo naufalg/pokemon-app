@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 export const AppContext = createContext();
 
@@ -13,6 +13,15 @@ export const AppProvider = ({ children }) => {
   const [offset, setOffset] = useState(0);
   const [ownedPokemon, setOwnedPokemon] = useState(localStorage.getItem("myPokemon")?([...JSON.parse(localStorage.getItem("myPokemon"))]):(null))
 
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 600);
+    setIsMediumSize(window.innerWidth < 820)
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <AppContext.Provider

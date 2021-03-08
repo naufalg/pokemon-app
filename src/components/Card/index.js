@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 
+import { getPokemonByUrl } from "../../api/restApi";
 import TypeLabel from "../TypeLabel";
 import { capitalize } from "../../utils";
-import { getPokemonByUrl } from "../../api/restApi";
 import {
   CardWrapper,
   InfoWrapper,
@@ -51,7 +51,7 @@ export default function Card({ listData, url }) {
           <LabelWrapper>
             {data.types &&
               data.types.map((type, index) => (
-                <TypeLabel typeName={type.type.name} />
+                <TypeLabel key={index} typeName={type.type.name} />
               ))}
           </LabelWrapper>
         </div>

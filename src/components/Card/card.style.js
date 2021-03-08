@@ -76,7 +76,9 @@ const Image = styled.img`
   margin: auto;
 `;
 
-const Title = styled.p``;
+const Title = styled.p`
+  font-family: "VT323", monospace;
+`;
 
 const Desc = styled.p``;
 

@@ -10,9 +10,9 @@ const addPokemon = (pokemonData) => {
   }
 };
 
-export const catchPokemon = (pokemonData) => {
+export const catchPokemon = (pokemonData, showPokeball) => {
   const probabilty = Math.random();
-  console.log(probabilty);
+  showPokeball();
   if (probabilty < 0.5) {
     alert(`${probabilty}  failed`);
   } else {
