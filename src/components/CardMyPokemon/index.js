@@ -1,3 +1,4 @@
+/*jshint esversion: 10 */
 import React, { useState, useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";

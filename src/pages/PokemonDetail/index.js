@@ -1,6 +1,8 @@
+/*jshint esversion: 10 */
 import React, { useEffect, useState, useContext } from "react";
 import Skeleton from "react-loading-skeleton";
 import { useParams, NavLink, useHistory } from "react-router-dom";
+import { BsBackspaceFill } from "react-icons/bs";
 
 import PokeballDrop from "../../components/PokeballDrop";
 import { getPokemonById } from "../../api/restApi";
@@ -77,13 +79,13 @@ export default function PokemonDetail() {
 
   return (
     <Wrapper>
-      <BackButton
+      <br/>
+      <BsBackspaceFill
         onClick={() => {
           history.push("/pokedex");
         }}
-      >
-        back
-      </BackButton>
+        style={{ color: "white" }}
+      />
       <br />
       <InnerWrapper>
         <NavButton

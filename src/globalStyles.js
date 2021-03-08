@@ -1,3 +1,4 @@
+/*jshint esversion: 10 */
 import styled from "@emotion/styled";
 
 const breakpoints = [576, 768, 992, 1200];
@@ -49,7 +50,9 @@ body{
   font-size:1.2em;
   transition: 150ms;
   &:hover {
-    filter: brightness(80%)
+    filter: brightness(80%);
+    cursor:pointer;
+    transform: scale(1.2);
   }
 }
 `;

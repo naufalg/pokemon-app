@@ -1,3 +1,4 @@
+/*jshint esversion: 10 */
 import styled from "@emotion/styled";
 import { Container, mediaQuery } from "../../globalStyles";
 import pokeballTrans from "../../assets/pokeball-trans.png";

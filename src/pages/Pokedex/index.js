@@ -1,3 +1,4 @@
+/*jshint esversion: 10 */
 import React, { useState, useEffect, useContext, lazy, Suspense } from "react";
 import { NavLink } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
