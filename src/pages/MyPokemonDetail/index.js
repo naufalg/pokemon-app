@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams, NavLink, useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import {
   BsBackspaceFill,
@@ -15,7 +15,6 @@ import {
   ReleaseButton,
   Desc,
   Image,
-  InfoWrapper,
   ImageWrapper,
   DetailWrapper,
   NavButton,
@@ -23,7 +22,6 @@ import {
   BackButton,
   Wrapper,
   DescWrapper,
-  Title,
   Name,
   ULists,
   TypeWrapper,
@@ -69,22 +67,23 @@ export default function MyPokemonDetail() {
   const imageUrl =
     "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon";
 
-  console.log(data);
 
   return (
     <Wrapper>
       <br />
-      <BsBackspaceFill
-        style={{ color: "white" }}
-        onClick={() => {
-          history.push("/my-pokemon");
-        }}
-      />
+      <BackButton>
+        <BsBackspaceFill
+          onClick={() => {
+            history.push("/my-pokemon");
+          }}
+        />
+      </BackButton>
       <br />
       {data && (
         <InnerWrapper>
           {idx > 0 ? (
             <NavButton
+              className="left"
               onClick={() => {
                 history.push(handleNav("prev", page));
               }}
@@ -95,13 +94,15 @@ export default function MyPokemonDetail() {
               {othersData.prevData && !isMediumSize && othersData.prevData.name}
             </NavButton>
           ) : (
-            <div></div>
+            <div style={{ minWidth: "50px", backgroundColor: "transparent" }} />
           )}
 
           <DetailWrapper>
             <ImageWrapper>
               {!isLoading ? (
-                <Name>{`#${data.id} ${capitalize(data.name)}`}</Name>
+                <Name>{`#${data.id} ${capitalize(data.name)} "${
+                  myPokemon[idx].nickname
+                }"`}</Name>
               ) : (
                 <Skeleton height={20} width={200} />
               )}
@@ -176,7 +177,7 @@ export default function MyPokemonDetail() {
             )}
           </DetailWrapper>
           {myPokemon.length - 1 === parseInt(idx) ? (
-            <div></div>
+            <div style={{ minWidth: "50px", backgroundColor: "transparent" }} />
           ) : (
             <NavButton
               onClick={() => {

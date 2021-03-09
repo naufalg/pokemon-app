@@ -1,41 +1,35 @@
-import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
-import {
-  BsBackspaceFill,
-  BsChevronDoubleRight,
-  BsChevronDoubleLeft,
-} from "react-icons/bs";
+import React from "react";
+import { NavLink, useHistory } from "react-router-dom";
 
-import { AppContext } from "../../context/AppContext";
 import { globalUrl } from "../../api/restApi";
 import { CardMyPokemon } from "../../components";
+import { clearPokemon } from "../../utils";
 import Navbar from "../../components/Navbar";
 import {
   Wrapper,
   ListWrapper,
   CatchPokemon,
   Title,
-  CatchWrapper,
+  ClearButton,
 } from "./myPokemon.style";
 
 export default function MyPokemon() {
+  const history = useHistory();
   const getMyPokemon = JSON.parse(localStorage.getItem("myPokemon"));
-  console.log(getMyPokemon);
 
   const navbarData = [
     { tabName: "HOME", link: "/" },
     { tabName: "POKéDEX", link: "/pokedex" },
-    { tabName: "MY POKé", link: "/my-pokemon" },
+    {
+      tabName: "MY POKé",
+      link: "/my-pokemon",
+      badge: getMyPokemon ? getMyPokemon.length : null,
+    },
   ];
 
   return (
     <Wrapper>
-      <Navbar
-        tabs={navbarData}
-        activeTab="MY POKEMON"
-        textColor="white"
-      />
-      <br />
+      <Navbar tabs={navbarData} activeTab="MY POKEMON" textColor="white" />
       {getMyPokemon ? (
         <Title>
           My Pokemon <br /> You have {getMyPokemon.length} pokemon
@@ -43,6 +37,18 @@ export default function MyPokemon() {
         </Title>
       ) : (
         <Title>You dont't have any pokemon</Title>
+      )}
+
+      {getMyPokemon && (
+        <div style={{ textAlign: "center" }}>
+          <ClearButton
+            onClick={() => {
+              clearPokemon(history);
+            }}
+          >
+            Release All
+          </ClearButton>
+        </div>
       )}
       <br />
       {getMyPokemon ? (

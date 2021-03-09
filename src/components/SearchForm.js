@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 
 const Search = styled.input`
@@ -19,7 +19,6 @@ export default function SearchForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(inputState);
   };
   return (
     <form onSubmit={handleSubmit}>

@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
-import { NavbarWrapper, ULists, List, Anchor } from "./navbar.style";
+import { NavbarWrapper, ULists, List, Anchor, Badge } from "./navbar.style";
 
-export default function Navbar({ tabs, activeTab, textColor }) {
-  console.log(tabs);
-  console.log(activeTab);
-
+export default function Navbar({ tabs, activeTab }) {
   return (
     <NavbarWrapper>
       <ULists>
-        {tabs[0].tabName !== undefined &&
+        {tabs &&
           tabs.map((item, index) => (
             <List key={index}>
               <NavLink to={item.link}>
@@ -17,6 +14,7 @@ export default function Navbar({ tabs, activeTab, textColor }) {
                 // className={item[index].tabName === activeTab ? "active" : ""}
                 >
                   {item.tabName}
+                  {item.badge && <Badge>{item.badge}</Badge>}
                 </Anchor>
               </NavLink>
             </List>
@@ -24,22 +22,4 @@ export default function Navbar({ tabs, activeTab, textColor }) {
       </ULists>
     </NavbarWrapper>
   );
-}
-
-{
-  /* <List>
-          <Anchor>
-            <NavLink to="/">Home</NavLink>
-          </Anchor>
-        </List>
-        <List>
-          <Anchor>
-            <NavLink to="/pokedex">Pokedex</NavLink>
-          </Anchor>
-        </List>
-        <List>
-          <Anchor>
-            <NavLink to="/">My Pokemon</NavLink>
-          </Anchor>
-        </List> */
 }

@@ -11,30 +11,46 @@ export const AppProvider = ({ children }) => {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(40);
   const [offset, setOffset] = useState(0);
-  const [ownedPokemon, setOwnedPokemon] = useState(localStorage.getItem("myPokemon")?([...JSON.parse(localStorage.getItem("myPokemon"))]):(null))
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [ownedPokemon, setOwnedPokemon] = useState(
+    localStorage.getItem("myPokemon")
+      ? [...JSON.parse(localStorage.getItem("myPokemon"))]
+      : null
+  );
 
   const handleResize = () => {
     setIsMobile(window.innerWidth < 600);
     setIsMediumSize(window.innerWidth < 820);
-  }
+  };
 
   useEffect(() => {
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
     <AppContext.Provider
       value={{
-        isMobile, setIsMobile,
-        isMediumSize, setIsMediumSize,
-        isLoading, setIsLoading,
-        isFetching, setIsFetching,
-        listItem, setListItem,
-        page, setPage,
-        limit, setLimit,
-        offset, setOffset,
-        ownedPokemon, setOwnedPokemon
+        isMobile,
+        setIsMobile,
+        isMediumSize,
+        setIsMediumSize,
+        isLoading,
+        setIsLoading,
+        isFetching,
+        setIsFetching,
+        listItem,
+        setListItem,
+        page,
+        setPage,
+        limit,
+        setLimit,
+        offset,
+        setOffset,
+        ownedPokemon,
+        setOwnedPokemon,
+        isModalOpen,
+        setIsModalOpen,
       }}
     >
       {children}

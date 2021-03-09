@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { mediaQuery } from "../../globalStyles";
 import pokeballTrans from "../../assets/pokeball-trans.png";
 
 const CardWrapper = styled.div`

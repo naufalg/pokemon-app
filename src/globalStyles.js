@@ -1,6 +1,6 @@
 /*jshint esversion: 10 */
 import styled from "@emotion/styled";
-import pokeball from './assets/pokeball.png';
+import pokeball from "./assets/pokeball.png";
 
 const breakpoints = [576, 768, 992, 1200];
 
@@ -9,7 +9,7 @@ export const mediaQuery = breakpoints.map(
 );
 
 export const Container = styled.div`
-  padding: 0 6.4%;
+  padding: 0 4%;
   margin: auto;
   max-width: 1600px;
   ${mediaQuery[2]} {

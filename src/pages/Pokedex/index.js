@@ -1,12 +1,11 @@
 /*jshint esversion: 10 */
-import React, { useState, useEffect, useContext, lazy, Suspense } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useContext, lazy, Suspense } from "react";
 import Skeleton from "react-loading-skeleton";
-import { BsBackspaceFill } from "react-icons/bs";
-import { getPokemonsByPage, globalUrl } from "../../api/restApi";
+import { getPokemonsByPage } from "../../api/restApi";
 
+import ScrollTop from "../../components/ScrollTop";
 import { AppContext } from "../../context/AppContext";
-import { Wrapper, NavButton, TitleSection, ListWrapper } from "./pokedex.style";
+import { Wrapper, TitleSection, ListWrapper } from "./pokedex.style";
 import Navbar from "../../components/Navbar";
 const Card = lazy(() => import("../../components/Card"));
 
@@ -19,7 +18,6 @@ function Pokedex() {
     page,
     setPage,
     limit,
-    setLimit,
     offset,
     setOffset,
   } = useContext(AppContext);
@@ -38,7 +36,6 @@ function Pokedex() {
     )
       return;
     setIsFetching(true);
-    console.log(isFetching);
   };
 
   const getData = async () => {
@@ -63,28 +60,18 @@ function Pokedex() {
   const navbarData = [
     { tabName: "HOME", link: "/" },
     { tabName: "POKéDEX", link: "/pokedex" },
-    { tabName: "MY POKé", link: "/my-pokemon" },
+    {
+      tabName: "MY POKé",
+      link: "/my-pokemon",
+      badge: myPokemon ? myPokemon.length : null,
+    },
   ];
-
-  // console.log("isFetching", isFetching);
-  console.log("page", page);
-  console.log("limit", limit);
-  console.log("offset", offset);
-  console.log("listItem", listItem);
 
   return (
     <Wrapper>
       <Navbar tabs={navbarData} activeTab="POKEDEX" />
       <TitleSection>
         <h2>Pokédex</h2>
-        <br />
-        {myPokemon && (
-          <NavLink to="/my-pokemon">
-            <h4>
-              you have {myPokemon.length} pokemon{myPokemon.length > 1 && "s"}
-            </h4>
-          </NavLink>
-        )}
       </TitleSection>
       <ListWrapper>
         {listItem ? (
@@ -97,6 +84,7 @@ function Pokedex() {
           <Skeleton />
         )}
       </ListWrapper>
+      <ScrollTop />
       {isFetching && <Skeleton />}
       {/* <Pagination /> */}
     </Wrapper>

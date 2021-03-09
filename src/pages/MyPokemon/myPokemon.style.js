@@ -2,15 +2,21 @@ import styled from "@emotion/styled";
 import { Container, mediaQuery } from "../../globalStyles";
 
 const Wrapper = styled(Container)`
+  overflow: hidden;
   min-height: 100vh;
-  background: -webkit-linear-gradient(to bottom, #b31217, #e64a45);
-  background: linear-gradient(to bottom, #b31217, #e64a45);
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 1) 3%,
+    rgba(235, 158, 98, 1) 34.6%,
+    rgba(177, 10, 10, 1) 63.7%,
+    rgba(0, 0, 0, 1) 102%
+  );
+  z-index: 1000;
 `;
 
 const Title = styled.p`
   text-align: center;
-  color: white;
-  font-weigh: bold;
+  color: black;
   font-family: "VT323", monospace;
 `;
 
@@ -98,4 +104,25 @@ const ListWrapper = styled.div`
   }
 `;
 
-export { Wrapper, ListWrapper, Title, CatchPokemon, CatchWrapper };
+const ClearButton = styled.button`
+  text-align: right;
+  margin: 10px;
+  border-radius: 40px;
+  font-family: "VT323", monospace;
+  font-size: 22px;
+  padding: 10px;
+  border: none;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+  background-color: #f8d030;
+  color: black;
+  transition: 300ms;
+  &:hover {
+    background-color: #cc0000;
+    box-shadow: 0px 0px 0px 3px #000 inset;
+    cursor: pointer;
+    color: white;
+  }
+`;
+
+export { Wrapper, ListWrapper, Title, CatchPokemon, CatchWrapper, ClearButton };

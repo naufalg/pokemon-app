@@ -20,8 +20,8 @@ const NavButton = styled.button`
 `;
 
 const TitleSection = styled.div`
-  padding: 20px;
   text-align: center;
+  margin-bottom: 20px;
 `;
 
 const PageButton = styled.button`

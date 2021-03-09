@@ -10,7 +10,9 @@ const NavbarWrapper = styled.nav`
     rgba(255, 255, 255, 0) 100%
   );
   margin: 0 auto;
-  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  z-index: 1000;
+  margin-bottom: 15px;
 `;
 
 const ULists = styled.ul`
@@ -18,15 +20,28 @@ const ULists = styled.ul`
   background: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.2) 25%,
-    rgba(255, 255, 255, 0.2) 75%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.2) 50%,
     rgba(255, 255, 255, 0) 100%
   );
+
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.1),
     inset 0 0 1px rgba(255, 255, 255, 0.6);
+
+  &:hover {
+    transition: 200ms;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.4) 25%,
+      rgba(255, 255, 255, 0.4) 75%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
 `;
 
 const List = styled.li`
+  position: relative;
   display: inline-block;
 `;
 
@@ -52,4 +67,16 @@ const Anchor = styled.a`
   }
 `;
 
-export { NavbarWrapper, ULists, List, Anchor };
+const Badge = styled.span`
+  position: absolute;
+  top: 0px;
+  font-size: 14px;
+  right: -10px;
+  padding: 1px 4px;
+  border-radius: 50%;
+  background: #cc0000;
+  color: white;
+  opacity: 1;
+`;
+
+export { NavbarWrapper, ULists, List, Anchor, Badge };

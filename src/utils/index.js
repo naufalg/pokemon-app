@@ -37,12 +37,9 @@ export const catchPokemon = (pokemonData) => {
 
 export const removePokemon = (removePokemonData, index, nickname, history) => {
   const confirmRemove = window.confirm(
-    `Are you sure to delete ${nickname || removePokemonData.name}?`
+    `Are you sure to release "${nickname || removePokemonData.name}"?`
   );
   let myPokemonData = JSON.parse(localStorage.getItem("myPokemon"));
-  console.log("myPokemonData.length", myPokemonData.length);
-  console.log("confirmRemove", confirmRemove);
-  console.log("removePokemonData", removePokemonData);
   if (confirmRemove === true && myPokemonData.length > 1) {
     myPokemonData.splice(index, 1);
     localStorage.setItem("myPokemon", JSON.stringify([...myPokemonData]));
@@ -52,6 +49,17 @@ export const removePokemon = (removePokemonData, index, nickname, history) => {
     history.push("/my-pokemon");
   } else if (confirmRemove === false) {
     localStorage.setItem("myPokemon", JSON.stringify(myPokemonData));
+  }
+};
+
+export const clearPokemon = (history) => {
+  const myPokemonData = JSON.parse(localStorage.getItem("myPokemon"));
+  const confirmClear = window.confirm(
+    `Are you sure to release all (${myPokemonData.length}) pokemon?`
+  );
+  if (confirmClear === true) {
+    localStorage.removeItem("myPokemon");
+    history.push("/");
   }
 };
 

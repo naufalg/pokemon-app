@@ -1,6 +1,6 @@
 /*jshint esversion: 10 */
 import React, { useState, useEffect } from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 
 import { getPokemonByUrl } from "../../api/restApi";
@@ -11,7 +11,6 @@ import {
   Title,
   Image,
   ImageWrapper,
-  InfoWrapper,
   CardWrapper,
   LabelWrapper,
 } from "./cardMyPokemon.style";
@@ -29,7 +28,6 @@ export default function Card({ passData, url, index }) {
     setIsLoading(false);
   };
 
-  console.log(data);
 
   useEffect(() => {
     getData();

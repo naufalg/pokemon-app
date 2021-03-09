@@ -1,7 +1,6 @@
 /*jshint esversion: 10 */
 import styled from "@emotion/styled";
 import { Container, mediaQuery } from "../../globalStyles";
-import pokeballTrans from "../../assets/pokeball-trans.png";
 
 const Wrapper = styled(Container)`
   padding-bottom: 20px;
@@ -12,9 +11,9 @@ const Wrapper = styled(Container)`
   max-width: 100vw;
 `;
 
-const BackButton = styled.button`
-  width: 50px;
-  height: 30px;
+const BackButton = styled.span`
+  font-size: 30px;
+  color: #db8700;
 `;
 
 const InnerWrapper = styled.div`
@@ -39,7 +38,7 @@ const NavButton = styled.button`
   &:hover {
     transform: translateX(20px);
 
-    &.left{
+    &.left {
       transform: translateX(-20px);
     }
   }

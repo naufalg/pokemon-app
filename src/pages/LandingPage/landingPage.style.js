@@ -55,4 +55,12 @@ const NavButton = styled.button`
   }
 `;
 
-export { NavButton, Wrapper, InnerWrapper };
+const WM = styled.div`
+  color: #c00000;
+  position: absolute;
+  display: block;
+  font-size: 7px;
+  bottom: 0;
+`;
+
+export { NavButton, Wrapper, InnerWrapper, WM };

@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, useHistory } from "react-router-dom";
-import Skeleton from "react-loading-skeleton";
+import { useHistory } from "react-router-dom";
 
 import { getPokemonByUrl } from "../../api/restApi";
 import TypeLabel from "../TypeLabel";
 import { capitalize } from "../../utils";
 import {
   CardWrapper,
-  InfoWrapper,
   LabelWrapper,
   ImageWrapper,
   Image,
@@ -19,8 +17,6 @@ export default function Card({ listData, url }) {
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState({});
-
-  const myPokemon = JSON.parse(localStorage.getItem("myPokemon"));
 
   const getData = async () => {
     setIsLoading(true);

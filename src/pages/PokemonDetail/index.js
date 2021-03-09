@@ -1,7 +1,7 @@
 /*jshint esversion: 10 */
 import React, { useEffect, useState, useContext } from "react";
 import Skeleton from "react-loading-skeleton";
-import { useParams, NavLink, useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import {
   BsBackspaceFill,
   BsChevronDoubleRight,
@@ -9,7 +9,7 @@ import {
 } from "react-icons/bs";
 
 import pokeball from "../../assets/pokeball.png";
-import PokeballDrop from "../../components/PokeballDrop";
+import { PokemonCatched } from "../../components";
 import { getPokemonById } from "../../api/restApi";
 import TypeLabel from "../../components/TypeLabel";
 import { AppContext } from "../../context/AppContext";
@@ -33,7 +33,7 @@ import {
 
 export default function PokemonDetail() {
   const history = useHistory();
-  const { isMediumSize } = useContext(AppContext);
+  const { isMediumSize, isModalOpen } = useContext(AppContext);
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState({});
@@ -81,24 +81,21 @@ export default function PokemonDetail() {
   const imageUrl =
     "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon";
 
-  console.log(data);
-  console.log(data.types);
-
-  console.log(showPokeball);
 
   return (
     <Wrapper>
       <br />
-      <BsBackspaceFill
-        onClick={() => {
-          history.push("/pokedex");
-        }}
-        style={{ color: "white" }}
-      />
+      <BackButton>
+        <BsBackspaceFill
+          onClick={() => {
+            history.push("/pokedex");
+          }}
+        />
+      </BackButton>
       <br />
       <InnerWrapper>
         <NavButton
-        className="left"
+          className="left"
           onClick={() => {
             history.push(`${handleNav("prev", parseInt(id))}`);
           }}
@@ -125,19 +122,20 @@ export default function PokemonDetail() {
                 />
                 <CatchButton
                   onClick={() => {
+                    // setIsModalOpen(true)
                     setShowPokeball(true);
                     setTimeout(setShowPokeball(false), 3000);
                     setTimeout(catchPokemon(data, setShowPokeball), 4000);
                   }}
                 >
-                  <img className="pokeball" src={pokeball} />
+                  <img className="pokeball" src={pokeball} altf="pokeball" />
                   CATCH
                 </CatchButton>
               </>
             ) : (
               <Skeleton height={150} width={250} />
             )}
-            {showPokeball && <PokeballDrop />}
+            {showPokeball && <PokemonCatched />}
           </ImageWrapper>
           {!isLoading ? (
             <DescWrapper>

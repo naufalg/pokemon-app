@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { Container, mediaQuery } from "../../globalStyles";
-import pokeballTrans from "../../assets/pokeball-trans.png";
 
 const Wrapper = styled(Container)`
   background: rgb(221, 24, 24);
@@ -14,9 +13,9 @@ const Wrapper = styled(Container)`
   max-width: 100vw;
 `;
 
-const BackButton = styled.button`
-  width: 50px;
-  height: 30px;
+const BackButton = styled.span`
+  font-size: 30px;
+  color: white;
 `;
 
 const InnerWrapper = styled.div`
