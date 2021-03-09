@@ -13,9 +13,9 @@ const addPokemon = (pokemonData) => {
 export const catchPokemon = (pokemonData) => {
   const probabilty = Math.random();
   if (probabilty < 0.5) {
-    alert(`failed`);
+    alert(`Aw, ${pokemonData.name} got away! try again`);
   } else {
-    alert(`Congratulations! you catch it!`);
+    alert(`Congratulations! you catch ${pokemonData.name}!`);
     const pokemonNickname = prompt(`add nickname to your pokemon!`);
     if (pokemonNickname) {
       addPokemon({

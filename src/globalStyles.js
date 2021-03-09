@@ -1,5 +1,6 @@
 /*jshint esversion: 10 */
 import styled from "@emotion/styled";
+import pokeball from './assets/pokeball.png';
 
 const breakpoints = [576, 768, 992, 1200];
 
@@ -39,8 +40,8 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 body{
-  font-family: 'Dosis', sans-serif;
-  // font-family: 'Archivo', sans-serif;
+  font-family: 'DotGothic16', sans-serif;
+    // font-family: 'Archivo', sans-serif;
 }
 .hidden {
   visibility:hidden;
@@ -53,6 +54,20 @@ body{
     filter: brightness(80%);
     cursor:pointer;
     transform: scale(1.2);
+  }
+}
+.catched {
+  &:after {
+    content: "";
+    background-image: url(${pokeball});
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 4%;
+    right: 0%;
+    bottom: 0%;
+    left: 3%;
+    opacity: 0.3;
   }
 }
 `;
@@ -74,4 +89,6 @@ export const typeColor = {
   ice: "#98d8d8",
   dragon: "#7038f8",
   flying: "#A98FF3",
+  steel: "#B7B7CE",
+  dark: "#705746",
 };

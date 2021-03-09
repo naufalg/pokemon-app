@@ -3,8 +3,8 @@ import { Container, mediaQuery } from "../../globalStyles";
 
 const Wrapper = styled(Container)`
   min-height: 100vh;
-  background: -webkit-linear-gradient(to top, #b31217, #e52d27);
-  background: linear-gradient(to top, #b31217, #e52d27);
+  background: -webkit-linear-gradient(to bottom, #b31217, #e64a45);
+  background: linear-gradient(to bottom, #b31217, #e64a45);
 `;
 
 const Title = styled.p`
@@ -22,6 +22,7 @@ const CatchWrapper = styled.div`
 `;
 
 const CatchPokemon = styled.div`
+  width: 75%;
   text-align: center;
   margin: auto;
   padding: 10px 40px;
@@ -39,10 +40,13 @@ const CatchPokemon = styled.div`
   overflow: hidden;
   position: relative;
   transition: all 0.3s ease-in-out;
+  ${mediaQuery[1]} {
+    width: 30%;
+  }
 
   &:hover {
     border: 4px solid #000;
-    background-color: #ee1515;
+    background-color: #cc0000;
     box-shadow: 0px 0px 0px 3px #666 inset;
     cursor: pointer;
     color: white;

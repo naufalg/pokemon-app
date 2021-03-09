@@ -20,6 +20,8 @@ export default function Card({ listData, url }) {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState({});
 
+  const myPokemon = JSON.parse(localStorage.getItem("myPokemon"));
+
   const getData = async () => {
     setIsLoading(true);
     setData({});
@@ -55,14 +57,14 @@ export default function Card({ listData, url }) {
               ))}
           </LabelWrapper>
         </div>
-      ) : data.name ? (
-        <Desc>
-          Pokemon Not Found!
-          <br />
-          Team Rocket is raiding the server!
-        </Desc>
       ) : (
-        <Skeleton />
+        data.name && (
+          <Desc>
+            Pokemon Not Found!
+            <br />
+            Team Rocket is raiding the server!
+          </Desc>
+        )
       )}
     </CardWrapper>
   );

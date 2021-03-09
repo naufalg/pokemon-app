@@ -8,10 +8,10 @@ export default function LandingPage() {
     <Wrapper>
       <InnerWrapper>
         <NavLink to="/pokedex">
-          <NavButton>Pokedex</NavButton>
+          <NavButton>Pokédex</NavButton>
         </NavLink>
         <NavLink to="/my-pokemon">
-          <NavButton>MyPokemon</NavButton>
+          <NavButton>My Pokémon</NavButton>
         </NavLink>
       </InnerWrapper>
     </Wrapper>

@@ -27,14 +27,28 @@ const InnerWrapper = styled.div`
 `;
 
 const NavButton = styled.button`
-  padding: 5px 10px;
-`;
-
-const Name = styled.p`
-  align-text: center;
-  color: white;
+  padding: 10px 15px;
   font-family: "VT323", monospace;
-  font-size: 1.5em;
+  font-size: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  cursor: pointer;
+  display: absolute;
+  border-radius: 50px;
+  color: black;
+  transition: 200ms;
+
+  &:hover {
+    transform: translateX(20px);
+
+    &.left {
+      transform: translateX(-20px);
+    }
+  }
+
+  ${mediaQuery[1]} {
+    display: flex;
+  }
 `;
 
 const DetailWrapper = styled.div`
@@ -45,6 +59,13 @@ const DetailWrapper = styled.div`
   ${mediaQuery[1]} {
     flex-direction: row;
   }
+`;
+
+const Name = styled.p`
+  align-text: center;
+  color: white;
+  font-family: "VT323", monospace;
+  font-size: 1.5em;
 `;
 
 const InfoWrapper = styled.div`
@@ -127,7 +148,7 @@ const ULists = styled.ul`
 const ReleaseButton = styled.button`
   padding: 10px 40px;
   border-radius: 40px;
-  font-family: "Nunito", sans-serif;
+  font-family: "VT323", monospace;
   font-size: 22px;
   text-transform: uppercase;
   letter-spacing: 1.3px;
@@ -136,16 +157,17 @@ const ReleaseButton = styled.button`
   color: #000;
   border: 4px solid #000;
   box-shadow: 0px 0px 0px 1px #000 inset;
-  background-color: #fff;
+  background-color: #f8d030;
   overflow: hidden;
   position: relative;
   transition: all 0.3s ease-in-out;
 
   &:hover {
     border: 4px solid #000;
-    background-color: #ee1515;
+    background-color: #f08030;
     box-shadow: 0px 0px 0px 3px #666 inset;
     cursor: pointer;
+    letter-spacing: 0.15em;
   }
 
   span {

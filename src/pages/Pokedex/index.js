@@ -7,7 +7,7 @@ import { getPokemonsByPage, globalUrl } from "../../api/restApi";
 
 import { AppContext } from "../../context/AppContext";
 import { Wrapper, NavButton, TitleSection, ListWrapper } from "./pokedex.style";
-import Pagination from "./Pagination";
+import Navbar from "../../components/Navbar";
 const Card = lazy(() => import("../../components/Card"));
 
 function Pokedex() {
@@ -60,6 +60,12 @@ function Pokedex() {
     setIsFetching(false);
   };
 
+  const navbarData = [
+    { tabName: "HOME", link: "/" },
+    { tabName: "POKéDEX", link: "/pokedex" },
+    { tabName: "MY POKé", link: "/my-pokemon" },
+  ];
+
   // console.log("isFetching", isFetching);
   console.log("page", page);
   console.log("limit", limit);
@@ -68,16 +74,15 @@ function Pokedex() {
 
   return (
     <Wrapper>
-      <br />
-      <NavLink to="/">
-        <BsBackspaceFill style={{ color: "white" }} />
-      </NavLink>
+      <Navbar tabs={navbarData} activeTab="POKEDEX" />
       <TitleSection>
         <h2>Pokédex</h2>
-        <br/>
+        <br />
         {myPokemon && (
           <NavLink to="/my-pokemon">
-            <h4>you have {myPokemon.length} pokemon{myPokemon.length>1 && "s"}</h4>
+            <h4>
+              you have {myPokemon.length} pokemon{myPokemon.length > 1 && "s"}
+            </h4>
           </NavLink>
         )}
       </TitleSection>

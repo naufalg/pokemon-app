@@ -2,8 +2,13 @@
 import React, { useEffect, useState, useContext } from "react";
 import Skeleton from "react-loading-skeleton";
 import { useParams, NavLink, useHistory } from "react-router-dom";
-import { BsBackspaceFill } from "react-icons/bs";
+import {
+  BsBackspaceFill,
+  BsChevronDoubleRight,
+  BsChevronDoubleLeft,
+} from "react-icons/bs";
 
+import pokeball from "../../assets/pokeball.png";
 import PokeballDrop from "../../components/PokeballDrop";
 import { getPokemonById } from "../../api/restApi";
 import TypeLabel from "../../components/TypeLabel";
@@ -93,12 +98,17 @@ export default function PokemonDetail() {
       <br />
       <InnerWrapper>
         <NavButton
+        className="left"
           onClick={() => {
             history.push(`${handleNav("prev", parseInt(id))}`);
           }}
         >
-          &#171;{" "}
-          {othersData.prevData && !isMediumSize && othersData.prevData.name}
+          <span>
+            <BsChevronDoubleLeft />{" "}
+          </span>
+          {othersData.prevData &&
+            !isMediumSize &&
+            capitalize(othersData.prevData.name)}
         </NavButton>
         <DetailWrapper>
           <ImageWrapper>
@@ -120,7 +130,8 @@ export default function PokemonDetail() {
                     setTimeout(catchPokemon(data, setShowPokeball), 4000);
                   }}
                 >
-                  <span>CATCH</span>
+                  <img className="pokeball" src={pokeball} />
+                  CATCH
                 </CatchButton>
               </>
             ) : (
@@ -180,8 +191,12 @@ export default function PokemonDetail() {
             history.push(`${handleNav("next", parseInt(id))}`);
           }}
         >
-          {othersData.nextData && !isMediumSize && othersData.nextData.name}{" "}
-          &#187;
+          {othersData.nextData &&
+            !isMediumSize &&
+            capitalize(othersData.nextData.name)}{" "}
+          <span>
+            <BsChevronDoubleRight />
+          </span>
         </NavButton>
       </InnerWrapper>
     </Wrapper>

@@ -1,17 +1,22 @@
 import styled from "@emotion/styled";
-import { Container } from "../../globalStyles";
+import { Container, mediaQuery } from "../../globalStyles";
 import wallpaper from "../../assets/pokeball-wallpaper.jpg";
+import mobile from "../../assets/pokeball-mobile.jpg";
 
 const Wrapper = styled(Container)`
-  background: url(${wallpaper});
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: -20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  background: url(${mobile});
+  background-repeat: no-repeat;
+  background-size: cover;
+  ${mediaQuery[1]} {
+    background: url(${wallpaper});
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 `;
 
 const InnerWrapper = styled.div`

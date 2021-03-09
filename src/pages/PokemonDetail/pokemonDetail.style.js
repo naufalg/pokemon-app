@@ -25,7 +25,28 @@ const InnerWrapper = styled.div`
 `;
 
 const NavButton = styled.button`
-  padding: 5px 10px;
+  padding: 10px 15px;
+  font-family: "VT323", monospace;
+  font-size: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  cursor: pointer;
+  display: absolute;
+  border-radius: 50px;
+  color: black;
+  transition: 200ms;
+
+  &:hover {
+    transform: translateX(20px);
+
+    &.left{
+      transform: translateX(-20px);
+    }
+  }
+
+  ${mediaQuery[1]} {
+    display: flex;
+  }
 `;
 
 const DetailWrapper = styled.div`
@@ -72,7 +93,7 @@ const Image = styled.img`
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   transition: 200ms;
-  :hover {
+  &:hover {
     box-shadow: 0 8px 40px 2px rgba(31, 38, 135, 0.47);
   }
 `;
@@ -90,10 +111,10 @@ const DescWrapper = styled.div`
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   transition: 200ms;
-  :hover {
+  &:hover {
     box-shadow: 0 8px 40px 2px rgba(31, 38, 135, 0.47);
   }
-  
+
   ${mediaQuery[2]} {
     width: 210px;
   }
@@ -119,10 +140,11 @@ const ULists = styled.ul`
 `;
 
 const CatchButton = styled.button`
-  padding: 10px 40px;
+  display: flex;
+  padding: 10px 20px;
   border-radius: 40px;
-  font-family: "Nunito", sans-serif;
-  font-size: 22px;
+  font-family: "VT323", monospace;
+  font-size: 28px;
   text-transform: uppercase;
   letter-spacing: 1.3px;
   font-weight: 700;
@@ -134,22 +156,28 @@ const CatchButton = styled.button`
   overflow: hidden;
   position: relative;
   transition: all 0.3s ease-in-out;
+  z-index: 2;
 
   &:hover {
     border: 4px solid #000;
-    background-color: #ee1515;
+    background-color: #cc0000;
     box-shadow: 0px 0px 0px 3px #666 inset;
     cursor: pointer;
+    letter-spacing: 0.15em;
+    color: white;
+  }
+  &:hover .pokeball {
+    transform: rotate(360deg);
   }
 
-  span {
-    transition: all 0.2s ease-out;
-    z-index: 2;
+  img {
+    margin: auto;
+    height: 25px;
+    margin-right: 10px;
+    color: red;
+    transition: 500ms;
   }
-  &:hover span {
-    letter-spacing: 0.13em;
-    color: #000;
-  }
+
   &:after {
     background: #fff;
     border: 0px solid #000;

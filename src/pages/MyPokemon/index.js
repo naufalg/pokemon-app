@@ -1,10 +1,15 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { BsBackspaceFill } from "react-icons/bs";
+import {
+  BsBackspaceFill,
+  BsChevronDoubleRight,
+  BsChevronDoubleLeft,
+} from "react-icons/bs";
 
 import { AppContext } from "../../context/AppContext";
 import { globalUrl } from "../../api/restApi";
 import { CardMyPokemon } from "../../components";
+import Navbar from "../../components/Navbar";
 import {
   Wrapper,
   ListWrapper,
@@ -17,36 +22,44 @@ export default function MyPokemon() {
   const getMyPokemon = JSON.parse(localStorage.getItem("myPokemon"));
   console.log(getMyPokemon);
 
+  const navbarData = [
+    { tabName: "HOME", link: "/" },
+    { tabName: "POKéDEX", link: "/pokedex" },
+    { tabName: "MY POKé", link: "/my-pokemon" },
+  ];
+
   return (
     <Wrapper>
+      <Navbar
+        tabs={navbarData}
+        activeTab="MY POKEMON"
+        textColor="white"
+      />
       <br />
-      <NavLink style={{ textAlign: "left" }} to="/">
-        <BsBackspaceFill style={{ color: "white" }} />
-      </NavLink>
       {getMyPokemon ? (
-        <CatchPokemon>
+        <Title>
           My Pokemon <br /> You have {getMyPokemon.length} pokemon
           {getMyPokemon.length > 1 && "s"}
-        </CatchPokemon>
+        </Title>
       ) : (
         <Title>You dont't have any pokemon</Title>
       )}
       <br />
-      <ListWrapper>
-        {getMyPokemon ? (
-          getMyPokemon.map((item, idx) => (
+      {getMyPokemon ? (
+        <ListWrapper>
+          {getMyPokemon.map((item, idx) => (
             <CardMyPokemon
               url={`${globalUrl}/${item.id}`}
               passData={getMyPokemon[idx]}
               index={idx}
             />
-          ))
-        ) : (
-          <NavLink to="/pokedex">
-            <CatchPokemon>Go Catch Pokemon!</CatchPokemon>
-          </NavLink>
-        )}
-      </ListWrapper>
+          ))}
+        </ListWrapper>
+      ) : (
+        <NavLink to="/pokedex">
+          <CatchPokemon>Go Catch Pokemon!</CatchPokemon>
+        </NavLink>
+      )}
     </Wrapper>
   );
 }

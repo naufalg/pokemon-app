@@ -44,7 +44,7 @@ export default function Card({ passData, url, index }) {
         history.push(`/my-pokemon/${index}`);
       }}
     >
-      {data ? (
+      {passData && data ? (
         <div>
           <Title>
             {`#${data.id} ${capitalize(data.name)}`}
@@ -67,7 +67,7 @@ export default function Card({ passData, url, index }) {
           Team Rocket raiding the server
         </Desc>
       ) : (
-        <Skeleton />
+        <Skeleton height={400} />
       )}
     </CardWrapper>
   );

@@ -15,7 +15,7 @@ export const AppProvider = ({ children }) => {
 
   const handleResize = () => {
     setIsMobile(window.innerWidth < 600);
-    setIsMediumSize(window.innerWidth < 820)
+    setIsMediumSize(window.innerWidth < 820);
   }
 
   useEffect(() => {

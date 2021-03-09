@@ -1,7 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams, NavLink, useHistory } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
-import { BsBackspaceFill } from "react-icons/bs";
+import {
+  BsBackspaceFill,
+  BsChevronDoubleRight,
+  BsChevronDoubleLeft,
+} from "react-icons/bs";
 
 import { AppContext } from "../../context/AppContext";
 import TypeLabel from "../../components/TypeLabel";
@@ -85,7 +89,9 @@ export default function MyPokemonDetail() {
                 history.push(handleNav("prev", page));
               }}
             >
-              &#171;{" "}
+              <span>
+                <BsChevronDoubleLeft />{" "}
+              </span>
               {othersData.prevData && !isMediumSize && othersData.prevData.name}
             </NavButton>
           ) : (
@@ -125,11 +131,17 @@ export default function MyPokemonDetail() {
             {!isLoading ? (
               <DescWrapper>
                 <>
-                  <Desc>{`Height: ${data.height}`}</Desc>
-                  <Desc>{`Weight: ${data.weight}`}</Desc>
+                  <Desc>
+                    <b>Height:</b>
+                    {data.height} m
+                  </Desc>
+                  <Desc>
+                    <b>Weight:</b>
+                    {data.weight} Kg
+                  </Desc>
                   {data.abilities && (
                     <ULists>
-                      Abilites:
+                      <b>Abilites:</b>
                       {data.abilities.map((item, index) => (
                         <li
                           style={{
@@ -145,9 +157,7 @@ export default function MyPokemonDetail() {
                   <TypeWrapper style={{ display: "inline" }}>
                     {data.types &&
                       data.types.map((type, index) => (
-                        <Desc style={{ maxWidth: "26%" }}>
-                          <TypeLabel typeName={type.type.name} />
-                        </Desc>
+                        <TypeLabel typeName={type.type.name} />
                       ))}
                   </TypeWrapper>
                 </>
@@ -174,7 +184,9 @@ export default function MyPokemonDetail() {
               }}
             >
               {othersData.nextData && !isMediumSize && othersData.nextData.name}{" "}
-              &#187;
+              <span>
+                <BsChevronDoubleRight />
+              </span>
             </NavButton>
           )}
         </InnerWrapper>
