@@ -59,11 +59,6 @@ Mainly use React for Single Page Application advantages (migrate to NextJS for f
 ### Installation
 
 1. Get the API at [https://pokeapi.co/](https://pokeapi.co/)
-
-```sh
-  REACT_APP_POKE_API=https://pokeapi.co/api/v2/pokemon
-```
-
 2. Clone the repo
    ```sh
    git clone https://github.com/naufalg/pokemon-app.git
