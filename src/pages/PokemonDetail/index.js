@@ -58,14 +58,14 @@ export default function PokemonDetail() {
 
   const handleNav = (type, num) => {
     if (type === "prev") {
-      if (num === 1 || num === "1") {
+      if (num === 10001 || num === "10001") {
         return `/pokedex/898`;
       } else {
         return `/pokedex/${parseInt(num) - 1}`;
       }
     } else {
       if (num === 898 || num === "898") {
-        return `/pokedex/1`;
+        return `/pokedex/10001`;
       } else {
         return `/pokedex/${parseInt(num) + 1}`;
       }

@@ -24,8 +24,9 @@ export const catchPokemon = (pokemonData) => {
         id: pokemonData.id,
         url: `${process.env.REACT_APP_POKE_API}/${pokemonData.id}`,
       });
-    } else if (pokemonNickname.length === 0) {
+    } else if (pokemonNickname === null || pokemonNickname === "") {
       addPokemon({
+        nickname: "",
         name: pokemonData.name,
         id: pokemonData.id,
         url: `${process.env.REACT_APP_POKE_API}/${pokemonData.id}`,

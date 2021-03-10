@@ -74,12 +74,6 @@ function Pokedex() {
         <PokeballLoad />
       )}
       <ScrollTop />
-      <div
-        style={{ float: "left", clear: "both" }}
-        ref={(el) => {
-          this.messagesEnd = el;
-        }}
-      ></div>
     </Wrapper>
   );
 }

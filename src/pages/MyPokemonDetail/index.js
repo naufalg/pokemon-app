@@ -67,6 +67,7 @@ export default function MyPokemonDetail() {
   const imageUrl =
     "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon";
 
+  console.log(myPokemon[idx]);
 
   return (
     <Wrapper>
@@ -100,9 +101,10 @@ export default function MyPokemonDetail() {
           <DetailWrapper>
             <ImageWrapper>
               {!isLoading ? (
-                <Name>{`#${data.id} ${capitalize(data.name)} "${
-                  myPokemon[idx].nickname
-                }"`}</Name>
+                <Name>
+                  {`#${data.id} ${capitalize(data.name)}`}
+                  {myPokemon[idx].nickname && ` "${myPokemon[idx].nickname}"`}
+                </Name>
               ) : (
                 <Skeleton height={20} width={200} />
               )}

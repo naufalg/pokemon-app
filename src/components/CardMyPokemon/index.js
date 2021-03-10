@@ -28,7 +28,6 @@ export default function Card({ passData, url, index }) {
     setIsLoading(false);
   };
 
-
   useEffect(() => {
     getData();
   }, [url]);
