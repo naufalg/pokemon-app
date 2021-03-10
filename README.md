@@ -1,70 +1,95 @@
-# Getting Started with Create React App
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://pokemon-app-nghifari.vercel.app/">
+    <img src="src/assets/pokedex-logo.png" alt="Logo" width="120">
+  </a>
 
-## Available Scripts
+  <h3 align="center">Pokedex Web Application</h3>
 
-In the project directory, you can run:
+  <p align="center">
+    Pokedex SPA-website-based application with fun catch feature!
+    <br />
+    <br />
+    <a href="https://pokemon-app-nghifari.vercel.app/">View Demo</a>
+  </p>
+</p>
 
-### `yarn start`
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+        <a href="#installation">Installation</a>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#updates">Updates</a></li>
+  </ol>
+</details>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<!-- ABOUT THE PROJECT -->
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## About The Project
 
-### `yarn test`
+[![Pokemon app Screen Shot][product-screenshot]](https://pokemon-app-nghifari.vercel.app/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This app consist of two main feature:
 
-### `yarn build`
+1. Explore the Pokemon(s) provided by PokeAPI
+2. and make them for your own by catching them
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This project more like a playground for myself to apply my javascript and react skills
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Built With
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Mainly use React for Single Page Application advantages (migrate to NextJS for further updates) with many others supporting libraries
 
-### `yarn eject`
+- [React](https://reactjs.org/)
+- [Axios](https://github.com/axios/axios)
+- [Emotion.JS](https://emotion.sh/)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Installation
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Get the API at [https://pokeapi.co/](https://pokeapi.co/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```sh
+  REACT_APP_POKE_API=https://pokeapi.co/api/v2/pokemon
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+2. Clone the repo
+   ```sh
+   git clone https://github.com/naufalg/pokemon-app.git
+   ```
+3. Install NPM packages
+   ```sh
+   yarn install
+   ```
+4. Save your API in `.env`
+   ```sh
+   REACT_APP_POKE_API=https://pokeapi.co/api/v2/pokemon
+   ```
+5. Start locally
 
-## Learn More
+```sh
+   yarn start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Updates
+I am already decided the planned updates consist of :
+- Add catch animation
+- Add search feature
+- NextJs Migration
+- Testing using jest
+- TBA
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/in/naufalg/
+[product-screenshot]: src/assets/pokeapp-screenshot-2.png
