@@ -9,7 +9,7 @@ export const AppProvider = ({ children }) => {
   const [isFetching, setIsFetching] = useState(false);
   const [listItem, setListItem] = useState([]);
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(40);
+  const [limit, setLimit] = useState(20);
   const [offset, setOffset] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [ownedPokemon, setOwnedPokemon] = useState(

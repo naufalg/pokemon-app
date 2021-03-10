@@ -10,6 +10,7 @@ import {
   LandingPage,
   MyPokemon,
   MyPokemonDetail,
+  NotFound
 } from "./pages";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
             <Route exact path="/pokedex/:id" component={PokemonDetail} />
             <Route exact path="/my-pokemon" component={MyPokemon} />
             <Route exact path="/my-pokemon/:idx" component={MyPokemonDetail} />
+            <Route path="*" component={NotFound} />
           </Switch>
         </Router>
       </IconContext.Provider>

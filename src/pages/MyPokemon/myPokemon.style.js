@@ -110,7 +110,7 @@ const ClearButton = styled.button`
   border-radius: 40px;
   font-family: "VT323", monospace;
   font-size: 22px;
-  padding: 10px;
+  padding: 10px 20px;
   border: none;
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.3);
   text-transform: uppercase;

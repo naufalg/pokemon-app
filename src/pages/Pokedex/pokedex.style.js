@@ -32,6 +32,8 @@ const PageButton = styled.button`
 const ListWrapper = styled.div`
   display: grid;
   grid-gap: 0.8em;
+  padding: 15px 0;
+  overflow: hidden;
   grid-template-columns: repeat(2, 1fr);
   ${mediaQuery[0]} {
     grid-template-columns: repeat(2, 1fr);
