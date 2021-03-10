@@ -4,6 +4,7 @@ import wallpaper from "../../assets/pokeball-wallpaper.jpg";
 import mobile from "../../assets/pokeball-mobile.jpg";
 
 const Wrapper = styled(Container)`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,9 +27,8 @@ const InnerWrapper = styled.div`
 `;
 
 const NavButton = styled.button`
-  &:last-child {
-    margin-top: 1em;
-  }
+  margin-bottom: 1em;
+
   @font-face {
     font-family: "Press Start 2p";
   }
@@ -36,7 +36,6 @@ const NavButton = styled.button`
   text-align: center;
   font-size: 20pt;
   display: inline-block;
-  margin: 5px;
   font-weight: bold;
   padding: 10px 0 10px 10px;
   background-color: lightgray;
@@ -56,11 +55,25 @@ const NavButton = styled.button`
 `;
 
 const WM = styled.div`
-  color: #c00000;
+  color: black;
   position: absolute;
   display: block;
   font-size: 7px;
   bottom: 0;
+  text-align: center;
 `;
 
-export { NavButton, Wrapper, InnerWrapper, WM };
+const SocialIcon = styled.a`
+  position: absolute;
+  display: block;
+  font-size: 25px;
+  left: 50%;
+  bottom: 5%;
+  transition: 500ms;
+  filter: drop-shadow(0px 0px 2px rgba(255, 255, 255, 0.6));
+  &:hover {
+    filter: drop-shadow(0px 0px 6px rgba(255, 255, 255, 0.9));
+  }
+`;
+
+export { NavButton, Wrapper, InnerWrapper, WM, SocialIcon };

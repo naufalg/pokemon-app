@@ -8,6 +8,7 @@ import {
   BsChevronDoubleLeft,
 } from "react-icons/bs";
 
+import NotFound from "../../pages/NotFound";
 import pokeball from "../../assets/pokeball.png";
 import { PokemonCatched } from "../../components";
 import { getPokemonById } from "../../api/restApi";
@@ -81,6 +82,9 @@ export default function PokemonDetail() {
   const imageUrl =
     "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon";
 
+  if (parseInt(id) > 898 && parseInt(id) < 10001) {
+    return <NotFound />;
+  }
 
   return (
     <Wrapper>
