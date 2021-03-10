@@ -63,7 +63,7 @@ Mainly use React for Single Page Application advantages (migrate to NextJS for f
    ```sh
    git clone https://github.com/naufalg/pokemon-app.git
    ```
-3. Install NPM packages
+3. Install packages
    ```sh
    yarn install
    ```
