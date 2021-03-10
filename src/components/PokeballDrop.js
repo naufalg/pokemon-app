@@ -6,7 +6,6 @@ const Wrapper = styled.div`
   position: absolute;
   top: 0%;
   left: 0%;
-  // transform: translate(-50%, -50%);
   z-index: 900;
   box-shadow: inset 0px 0px 0 2000px rgba(0, 0, 0, 0.5);
   min-height: 100vh;

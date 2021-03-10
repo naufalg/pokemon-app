@@ -8,19 +8,14 @@ export default function Modal({ children }) {
   const { isModalOpen, setIsModalOpen } = useContext(AppContext);
 
   const closeModal = (e) => {
-    if (
-      e.target.className === "popup" ||
-      e.target.className === "popup-voucher-close"
-    ) {
       setIsModalOpen(false);
-    }
   };
 
   if (isModalOpen) {
     return ReactDOM.createPortal(
       <ModalWrap className="popup" onClick={closeModal}>
         Modal
-        {children}
+        
       </ModalWrap>,
       document.getElementById("modal")
     );

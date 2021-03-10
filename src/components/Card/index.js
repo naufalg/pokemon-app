@@ -45,7 +45,6 @@ export default function Card({ listData, url }) {
           <ImageWrapper>
             <Image src={`${imageUrl}/${data.id}.png`} alt={`${data.name}`} />
           </ImageWrapper>
-          {/* <Title>{`${data.name}`}</Title> */}
           <LabelWrapper>
             {data.types &&
               data.types.map((type, index) => (

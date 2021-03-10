@@ -189,7 +189,7 @@ const ReleaseButton = styled.button`
     -webkit-transform: rotate(35deg);
     transform: rotate(35deg);
     width: 50px;
-    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1); /*easeOutCirc*/
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1); 
     z-index: 1;
   }
   &:hover:after {

@@ -20,7 +20,6 @@ const ScrollTopWrap = styled.div`
     right: 40px;
     transition: 0.8s cubic-bezier(0.86, 0, 0.07, 1);
     transform: translateX(0);
-    // transition: 0.8s cubic-bezier(.86, 0, .07, 1);
     &:hover {
       transform: translateY(-25px);
       box-shadow: 4px 3px 8px rgba(0, 0, 0, 0.4);
@@ -31,7 +30,6 @@ const ScrollTopWrap = styled.div`
     right: -150px;
     transition: 0.8s cubic-bezier(0.86, 0, 0.07, 1);
     transform: translateX(-110%);
-    // transition: 0.8s cubic-bezier(.86, 0, .07, 1);
   }
 `;
 

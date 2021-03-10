@@ -1,6 +1,4 @@
-/*jshint esversion: 10 */
-import React, { useEffect, useContext, lazy, Suspense } from "react";
-import Skeleton from "react-loading-skeleton";
+import React, { useEffect, useContext } from "react";
 import { getPokemonsByPage } from "../../api/restApi";
 import InfiniteScroll from "react-infinite-scroll-component";
 
@@ -9,7 +7,6 @@ import { AppContext } from "../../context/AppContext";
 import { Wrapper, TitleSection, ListWrapper } from "./pokedex.style";
 import { Navbar, Card, PokeballLoad } from "../../components";
 
-// const Card = lazy(() => import("../../components/Card"));
 
 function Pokedex() {
   const {
@@ -54,7 +51,7 @@ function Pokedex() {
       </TitleSection>
       {listItem.length > 0 ? (
         <InfiniteScroll
-          dataLength={listItem.length} //This is important field to render the next data
+          dataLength={listItem.length}
           next={getData}
           hasMore={true}
           loader={<PokeballLoad />}

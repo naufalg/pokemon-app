@@ -10,9 +10,7 @@ export default function Navbar({ tabs, activeTab }) {
           tabs.map((item, index) => (
             <List key={index}>
               <NavLink to={item.link}>
-                <Anchor
-                // className={item[index].tabName === activeTab ? "active" : ""}
-                >
+                <Anchor>
                   {item.tabName}
                   {item.badge && <Badge>{item.badge}</Badge>}
                 </Anchor>

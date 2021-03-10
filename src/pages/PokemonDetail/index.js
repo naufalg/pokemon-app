@@ -1,4 +1,3 @@
-/*jshint esversion: 10 */
 import React, { useEffect, useState, useContext } from "react";
 import Skeleton from "react-loading-skeleton";
 import { useParams, useHistory } from "react-router-dom";
@@ -34,7 +33,7 @@ import {
 
 export default function PokemonDetail() {
   const history = useHistory();
-  const { isMediumSize, isModalOpen } = useContext(AppContext);
+  const { isMediumSize } = useContext(AppContext);
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState({});
@@ -71,12 +70,6 @@ export default function PokemonDetail() {
         return `/pokedex/${parseInt(num) + 1}`;
       }
     }
-  };
-
-  const handleCatch = (data, setShowPokeball) => {
-    setShowPokeball(true);
-    setTimeout(setShowPokeball(false), 3000);
-    setTimeout(catchPokemon(data, setShowPokeball), 4000);
   };
 
   const imageUrl =
@@ -126,13 +119,12 @@ export default function PokemonDetail() {
                 />
                 <CatchButton
                   onClick={() => {
-                    // setIsModalOpen(true)
                     setShowPokeball(true);
                     setTimeout(setShowPokeball(false), 3000);
                     setTimeout(catchPokemon(data, setShowPokeball), 4000);
                   }}
                 >
-                  <img className="pokeball" src={pokeball} altf="pokeball" />
+                  <img className="pokeball" src={pokeball} alt="pokeball" />
                   CATCH
                 </CatchButton>
               </>

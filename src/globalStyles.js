@@ -1,4 +1,3 @@
-/*jshint esversion: 10 */
 import styled from "@emotion/styled";
 import pokeball from "./assets/pokeball.png";
 
