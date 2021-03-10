@@ -2,17 +2,17 @@
 import React, { useEffect, useContext, lazy, Suspense } from "react";
 import Skeleton from "react-loading-skeleton";
 import { getPokemonsByPage } from "../../api/restApi";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 import ScrollTop from "../../components/ScrollTop";
 import { AppContext } from "../../context/AppContext";
 import { Wrapper, TitleSection, ListWrapper } from "./pokedex.style";
-import Navbar from "../../components/Navbar";
-const Card = lazy(() => import("../../components/Card"));
+import { Navbar, Card, PokeballLoad } from "../../components";
+
+// const Card = lazy(() => import("../../components/Card"));
 
 function Pokedex() {
   const {
-    isFetching,
-    setIsFetching,
     listItem,
     setListItem,
     page,
@@ -25,18 +25,7 @@ function Pokedex() {
 
   useEffect(() => {
     getData();
-    window.addEventListener("scroll", handleScroll);
   }, []);
-
-  const handleScroll = () => {
-    if (
-      Math.ceil(window.innerHeight + document.documentElement.scrollTop) !==
-        document.documentElement.offsetHeight ||
-      isFetching
-    )
-      return;
-    setIsFetching(true);
-  };
 
   const getData = async () => {
     setTimeout(async () => {
@@ -44,17 +33,7 @@ function Pokedex() {
       setPage(page + 1);
       setOffset(offset + limit);
       setListItem(() => [...listItem, ...pokemonsData.results]);
-    }, 500);
-  };
-
-  useEffect(() => {
-    if (!isFetching) return;
-    fetchMoreListItems();
-  }, [isFetching]);
-
-  const fetchMoreListItems = () => {
-    getData();
-    setIsFetching(false);
+    }, 1500);
   };
 
   const navbarData = [
@@ -73,20 +52,34 @@ function Pokedex() {
       <TitleSection>
         <h2>Pokédex</h2>
       </TitleSection>
-      <ListWrapper>
-        {listItem ? (
-          listItem.map((item, idx) => (
-            <Suspense fallback={<Skeleton height={100} />}>
+      {listItem.length > 0 ? (
+        <InfiniteScroll
+          dataLength={listItem.length} //This is important field to render the next data
+          next={getData}
+          hasMore={true}
+          loader={<PokeballLoad />}
+          endMessage={
+            <p style={{ textAlign: "center" }}>
+              <b>Yay! You have seen it all</b>
+            </p>
+          }
+        >
+          <ListWrapper>
+            {listItem.map((item, idx) => (
               <Card key={idx} url={item.url} />
-            </Suspense>
-          ))
-        ) : (
-          <Skeleton />
-        )}
-      </ListWrapper>
+            ))}
+          </ListWrapper>
+        </InfiniteScroll>
+      ) : (
+        <PokeballLoad />
+      )}
       <ScrollTop />
-      {isFetching && <Skeleton />}
-      {/* <Pagination /> */}
+      <div
+        style={{ float: "left", clear: "both" }}
+        ref={(el) => {
+          this.messagesEnd = el;
+        }}
+      ></div>
     </Wrapper>
   );
 }
