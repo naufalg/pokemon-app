@@ -59,22 +59,28 @@ Mainly use React for Single Page Application advantages (migrate to NextJS for f
 ### Installation
 
 1. Get the API at [https://pokeapi.co/](https://pokeapi.co/)
-2. Save your API in `.env`
-   ```sh
-   REACT_APP_POKE_API=https://pokeapi.co/api/v2/pokemon
-   ```
-3.  Clone the repo
+
+```sh
+  REACT_APP_POKE_API=https://pokeapi.co/api/v2/pokemon
+```
+
+2. Clone the repo
    ```sh
    git clone https://github.com/naufalg/pokemon-app.git
    ```
-4. Install packages
+3. Install NPM packages
    ```sh
    yarn install
    ```
-5. Start locally
+4. Save your API in `.env`
    ```sh
-    yarn start
-  ```
+   REACT_APP_POKE_API=https://pokeapi.co/api/v2/pokemon
+   ```
+5. Start locally
+
+```sh
+   yarn start
+```
 
 ### Updates
 I am already decided the planned updates consist of :
