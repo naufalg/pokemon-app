@@ -13,7 +13,7 @@ import {
   Desc,
 } from "./card.style";
 
-export default function Card({ listData, url }) {
+export default function Card({ listData, url, isCatched }) {
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState({});
@@ -33,7 +33,7 @@ export default function Card({ listData, url }) {
   const imageUrl =
     "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon";
 
-  return (
+    return (
     <CardWrapper
       onClick={() => {
         history.push(`/pokedex/${data.id}`);
@@ -42,7 +42,7 @@ export default function Card({ listData, url }) {
       {data.id ? (
         <div>
           <Title>{`#${data.id} ${capitalize(data.name)}`}</Title>
-          <ImageWrapper>
+          <ImageWrapper className={isCatched}>
             <Image src={`${imageUrl}/${data.id}.png`} alt={`${data.name}`} />
           </ImageWrapper>
           <LabelWrapper>

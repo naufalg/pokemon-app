@@ -12,7 +12,11 @@ const Wrapper = styled(Container)`
 
 const BackButton = styled.span`
   font-size: 30px;
-  color: #db8700;
+  color: #5e5e5e;
+
+  &:hover {
+    color: #323232;
+  }
 `;
 
 const InnerWrapper = styled.div`
@@ -27,9 +31,9 @@ const NavButton = styled.button`
   font-family: "VT323", monospace;
   font-size: 20px;
   background-color: rgba(255, 255, 255, 0.7);
-  border: none;
   cursor: pointer;
   display: absolute;
+  border: none;
   border-radius: 50px;
   color: black;
   transition: 200ms;

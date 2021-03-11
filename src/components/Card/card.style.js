@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import pokeballTrans from "../../assets/pokeball-trans.png";
+import pokeball from "../../assets/pokeball.png";
 
 const CardWrapper = styled.div`
   display: block;
@@ -30,6 +31,17 @@ const ImageWrapper = styled.div`
   &:after {
     content: "";
     background-image: url(${pokeballTrans});
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 4%;
+    right: 0%;
+    bottom: 0%;
+    left: 3%;
+    opacity: 0.3;
+  }
+  &.active {
+    background-image: url(${pokeball});
     background-size: 20px 20px;
     background-repeat: no-repeat;
     position: absolute;
