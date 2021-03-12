@@ -35,6 +35,20 @@ export const catchPokemon = (pokemonData) => {
   }
 };
 
+export const catchPokemonModal = (
+  pokemonData,
+  setIsPokeballDrop,
+  setShowCatchedInput,
+  setShowFailCatch
+) => {
+  const probabilty = Math.random();
+  if (probabilty < 0.5) {
+    return setShowFailCatch(true);
+  } else {
+    return setShowCatchedInput(true);
+  }
+};
+
 export const removePokemon = (removePokemonData, index, nickname, history) => {
   const confirmRemove = window.confirm(
     `Are you sure to release "${nickname || removePokemonData.name}"?`

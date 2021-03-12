@@ -12,6 +12,9 @@ export const AppProvider = ({ children }) => {
   const [limit, setLimit] = useState(20);
   const [offset, setOffset] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPokeballDrop, setIsPokeballDrop] = useState(false);
+  const [showCatchedInput, setShowCatchedInput] = useState(false);
+  const [showFailCatch, setShowFailCatch] = useState(false);
   const [ownedPokemon, setOwnedPokemon] = useState(
     localStorage.getItem("myPokemon")
       ? [...JSON.parse(localStorage.getItem("myPokemon"))]
@@ -51,6 +54,12 @@ export const AppProvider = ({ children }) => {
         setOwnedPokemon,
         isModalOpen,
         setIsModalOpen,
+        isPokeballDrop,
+        setIsPokeballDrop,
+        showCatchedInput,
+        setShowCatchedInput,
+        showFailCatch,
+        setShowFailCatch,
       }}
     >
       {children}

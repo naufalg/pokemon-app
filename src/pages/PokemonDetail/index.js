@@ -14,7 +14,6 @@ import { getPokemonById } from "../../api/restApi";
 import TypeLabel from "../../components/TypeLabel";
 import { AppContext } from "../../context/AppContext";
 import { catchPokemon, capitalize } from "../../utils";
-
 import {
   CatchButton,
   Desc,
@@ -33,7 +32,15 @@ import {
 
 export default function PokemonDetail() {
   const history = useHistory();
-  const { isMediumSize } = useContext(AppContext);
+  const {
+    isMediumSize,
+    isPokeballDrop,
+    setIsPokeballDrop,
+    showCatchedInput,
+    setShowCatchedInput,
+    showFailCatch,
+    setShowFailCatch,
+  } = useContext(AppContext);
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState({});
@@ -119,7 +126,6 @@ export default function PokemonDetail() {
                 />
                 <CatchButton
                   onClick={() => {
-                    setShowPokeball(true);
                     setTimeout(setShowPokeball(false), 3000);
                     setTimeout(catchPokemon(data, setShowPokeball), 4000);
                   }}
@@ -131,7 +137,6 @@ export default function PokemonDetail() {
             ) : (
               <Skeleton height={150} width={250} />
             )}
-            {showPokeball && <PokemonCatched />}
           </ImageWrapper>
           {!isLoading ? (
             <DescWrapper>
