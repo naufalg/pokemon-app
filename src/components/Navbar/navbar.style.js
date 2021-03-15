@@ -45,7 +45,7 @@ const List = styled.li`
   display: inline-block;
 `;
 
-const Anchor = styled.a`
+const Anchor = styled.p`
   padding: 18px;
   font-family: "Open Sans";
   text-transform: uppercase;

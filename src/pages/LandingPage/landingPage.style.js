@@ -63,7 +63,7 @@ const WM = styled.div`
   text-align: center;
 `;
 
-const SocialIcon = styled.a`
+const SocialIcon = styled.p`
   position: absolute;
   display: block;
   font-size: 25px;
@@ -72,6 +72,7 @@ const SocialIcon = styled.a`
   transition: 500ms;
   filter: drop-shadow(0px 0px 2px rgba(255, 255, 255, 0.6));
   &:hover {
+    cursor: pointer;
     filter: drop-shadow(0px 0px 6px rgba(255, 255, 255, 0.9));
   }
 `;

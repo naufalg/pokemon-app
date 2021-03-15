@@ -124,7 +124,7 @@ const DescWrapper = styled.div`
 
 const Desc = styled.p`
   margin-top: 10px;
-  &:first-child {
+  &:first-of-type {
     margin-top: 0px;
   }
 `;
