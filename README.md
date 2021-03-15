@@ -44,9 +44,9 @@
 This app consist of two main feature:
 
 1. Explore the Pokemon(s) provided by PokeAPI
-2. and make them for your own by catching them
+2. Collect them as your companion by catching them!
 
-This project more like a playground for myself to apply my javascript and react skills
+This project more like a javascript front-end web application playground with pokemon data provided by PokeAPI
 
 ### Built With
 
@@ -55,6 +55,8 @@ Mainly use React for Single Page Application advantages (migrate to NextJS for f
 - [React](https://reactjs.org/)
 - [Axios](https://github.com/axios/axios)
 - [Emotion.JS](https://emotion.sh/)
+- [GraphQL](https://graphql.org/)
+- [Apollo Client](https://www.apollographql.com)
 
 ### Installation
 
@@ -86,7 +88,6 @@ Mainly use React for Single Page Application advantages (migrate to NextJS for f
 I am already decided the planned updates consist of :
 - Add catch animation
 - Add search feature
-- GraphQl implementation option
 - NextJs Migration
 - Testing using jest
 - TBA
