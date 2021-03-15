@@ -1,14 +1,16 @@
 import React, { useEffect, useContext } from "react";
-import { getPokemonsByPage } from "../../api/restApi";
+import { useHistory } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { getPokemonsByPage } from "../../api/restApi";
 
 import ScrollTop from "../../components/ScrollTop";
 import { AppContext } from "../../context/AppContext";
-import { Wrapper, TitleSection, ListWrapper } from "./pokedex.style";
+import { Wrapper, TitleSection, ListWrapper, APILogo } from "./pokedex.style";
 import { Navbar, Card, PokeballLoad } from "../../components";
-
+import graphqlLogo from "../../assets/graphql-logo.png";
 
 function Pokedex() {
+  const history = useHistory()
   const {
     listItem,
     setListItem,
@@ -48,6 +50,12 @@ function Pokedex() {
       <Navbar tabs={navbarData} activeTab="POKEDEX" />
       <TitleSection>
         <h2>Pokédex</h2>
+        <APILogo
+          onClick={() => {
+            history.push("/graphql-pokedex");
+          }}
+          src={graphqlLogo}
+        />
       </TitleSection>
       {listItem.length > 0 ? (
         <InfiniteScroll

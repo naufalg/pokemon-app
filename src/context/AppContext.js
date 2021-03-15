@@ -18,6 +18,12 @@ export const AppProvider = ({ children }) => {
       : null
   );
 
+  const [graphState, setGraphState] = useState({
+    page: 1,
+    limit: limit,
+    offset: 0,
+  });
+
   const handleResize = () => {
     setIsMobile(window.innerWidth < 600);
     setIsMediumSize(window.innerWidth < 820);
@@ -51,6 +57,8 @@ export const AppProvider = ({ children }) => {
         setOwnedPokemon,
         isModalOpen,
         setIsModalOpen,
+        graphState,
+        setGraphState,
       }}
     >
       {children}

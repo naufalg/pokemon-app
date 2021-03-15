@@ -9,25 +9,32 @@ const Wrapper = styled(Container)`
   min-height: 100vh;
 `;
 
-const PaginationWrapper = styled.div`
-  display: flex;
-  flex-direction: flex-col;
-  justify-content: center;
-`;
-
 const NavButton = styled.button`
   padding: 10px;
 `;
 
 const TitleSection = styled.div`
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: center;
   text-align: center;
   margin-bottom: 20px;
+  width: 100%;
 `;
 
-const PageButton = styled.button`
-  margin: 20px 10px;
-  padding: 10px;
+const APILogo = styled.img`
+  position: absolute;
+  left: 88%;
+  height: 50px;
+  filter: drop-shadow(0px 0px 2px rgba(255, 255, 255, 0.6));
+  transition: 300ms;
+  &:hover {
+    cursor: pointer;
+    filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 1));
+  }
 `;
+
 
 const ListWrapper = styled.div`
   display: grid;
@@ -46,11 +53,4 @@ const ListWrapper = styled.div`
   }
 `;
 
-export {
-  Wrapper,
-  PaginationWrapper,
-  NavButton,
-  TitleSection,
-  PageButton,
-  ListWrapper,
-};
+export { APILogo, Wrapper, NavButton, TitleSection, ListWrapper };

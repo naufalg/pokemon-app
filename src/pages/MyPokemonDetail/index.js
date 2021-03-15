@@ -67,8 +67,6 @@ export default function MyPokemonDetail() {
   const imageUrl =
     "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon";
 
-  console.log(myPokemon[idx]);
-
   return (
     <Wrapper>
       <br />

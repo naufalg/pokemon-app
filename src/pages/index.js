@@ -4,3 +4,4 @@ export { default as PokemonDetail } from './PokemonDetail';
 export { default as MyPokemon } from './MyPokemon';
 export { default as MyPokemonDetail } from './MyPokemonDetail';
 export { default as NotFound } from './NotFound';
+export { default as PokedexGraphQl } from './PokedexGraphQl';

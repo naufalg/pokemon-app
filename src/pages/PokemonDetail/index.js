@@ -9,12 +9,10 @@ import {
 
 import NotFound from "../../pages/NotFound";
 import pokeball from "../../assets/pokeball.png";
-import { PokemonCatched } from "../../components";
 import { getPokemonById } from "../../api/restApi";
 import TypeLabel from "../../components/TypeLabel";
 import { AppContext } from "../../context/AppContext";
 import { catchPokemon, capitalize } from "../../utils";
-
 import {
   CatchButton,
   Desc,
@@ -31,14 +29,13 @@ import {
   TypeWrapper,
 } from "./pokemonDetail.style";
 
-export default function PokemonDetail() {
+export default function PokemonDetail({ isGraph }) {
   const history = useHistory();
   const { isMediumSize } = useContext(AppContext);
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState({});
   const [othersData, setOthersData] = useState({});
-  const [showPokeball, setShowPokeball] = useState(false);
 
   const requestData = async (dataId) => {
     setIsLoading(true);
@@ -56,18 +53,34 @@ export default function PokemonDetail() {
     requestData(id);
   }, [id]);
 
-  const handleNav = (type, num) => {
-    if (type === "prev") {
-      if (num === 10001 || num === "10001") {
-        return `/pokedex/898`;
+  const handleNav = (type, num, isGraph) => {
+    if (isGraph === true) {
+      if (type === "prev") {
+        if (num === 10001 || num === "10001") {
+          return `/graphql-pokedex/898`;
+        } else {
+          return `/graphql-pokedex/${parseInt(num) - 1}`;
+        }
       } else {
-        return `/pokedex/${parseInt(num) - 1}`;
+        if (num === 898 || num === "898") {
+          return `/graphql-pokedex/10001`;
+        } else {
+          return `/graphql-pokedex/${parseInt(num) + 1}`;
+        }
       }
     } else {
-      if (num === 898 || num === "898") {
-        return `/pokedex/10001`;
+      if (type === "prev") {
+        if (num === 10001 || num === "10001") {
+          return `/pokedex/898`;
+        } else {
+          return `/pokedex/${parseInt(num) - 1}`;
+        }
       } else {
-        return `/pokedex/${parseInt(num) + 1}`;
+        if (num === 898 || num === "898") {
+          return `/pokedex/10001`;
+        } else {
+          return `/pokedex/${parseInt(num) + 1}`;
+        }
       }
     }
   };
@@ -85,25 +98,31 @@ export default function PokemonDetail() {
       <BackButton>
         <BsBackspaceFill
           onClick={() => {
-            history.push("/pokedex");
+            isGraph
+              ? history.push("/graphql-pokedex")
+              : history.push("/pokedex");
           }}
         />
       </BackButton>
       <br />
       <InnerWrapper>
-        <NavButton
-          className="left"
-          onClick={() => {
-            history.push(`${handleNav("prev", parseInt(id))}`);
-          }}
-        >
-          <span>
-            <BsChevronDoubleLeft />{" "}
-          </span>
-          {othersData.prevData &&
-            !isMediumSize &&
-            capitalize(othersData.prevData.name)}
-        </NavButton>
+        {parseInt(id) > 1 ? (
+          <NavButton
+            className="left"
+            onClick={() => {
+              history.push(`${handleNav("prev", parseInt(id), isGraph)}`);
+            }}
+          >
+            <span>
+              <BsChevronDoubleLeft />{" "}
+            </span>
+            {othersData.prevData &&
+              !isMediumSize &&
+              capitalize(othersData.prevData.name)}
+          </NavButton>
+        ) : (
+          <NavButton className="left">None</NavButton>
+        )}
         <DetailWrapper>
           <ImageWrapper>
             {!isLoading ? (
@@ -119,9 +138,7 @@ export default function PokemonDetail() {
                 />
                 <CatchButton
                   onClick={() => {
-                    setShowPokeball(true);
-                    setTimeout(setShowPokeball(false), 3000);
-                    setTimeout(catchPokemon(data, setShowPokeball), 4000);
+                    catchPokemon(data);
                   }}
                 >
                   <img className="pokeball" src={pokeball} alt="pokeball" />
@@ -131,7 +148,6 @@ export default function PokemonDetail() {
             ) : (
               <Skeleton height={150} width={250} />
             )}
-            {showPokeball && <PokemonCatched />}
           </ImageWrapper>
           {!isLoading ? (
             <DescWrapper>
@@ -182,7 +198,7 @@ export default function PokemonDetail() {
         </DetailWrapper>
         <NavButton
           onClick={() => {
-            history.push(`${handleNav("next", parseInt(id))}`);
+            history.push(`${handleNav("next", parseInt(id), isGraph)}`);
           }}
         >
           {othersData.nextData &&

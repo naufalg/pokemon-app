@@ -13,7 +13,7 @@ import {
   Desc,
 } from "./card.style";
 
-export default function Card({ listData, url, isCatched }) {
+export default function Card({ listData, url, isCatched, isGraph }) {
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState({});
@@ -33,14 +33,16 @@ export default function Card({ listData, url, isCatched }) {
   const imageUrl =
     "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon";
 
-    return (
-    <CardWrapper
-      onClick={() => {
-        history.push(`/pokedex/${data.id}`);
-      }}
-    >
+  return (
+    <CardWrapper>
       {data.id ? (
-        <div>
+        <div
+          onClick={() => {
+            isGraph
+              ? history.push(`/graphql-pokedex/${data.id}`)
+              : history.push(`/pokedex/${data.id}`);
+          }}
+        >
           <Title>{`#${data.id} ${capitalize(data.name)}`}</Title>
           <ImageWrapper className={isCatched}>
             <Image src={`${imageUrl}/${data.id}.png`} alt={`${data.name}`} />
@@ -52,14 +54,14 @@ export default function Card({ listData, url, isCatched }) {
               ))}
           </LabelWrapper>
         </div>
+      ) : data.name ? (
+        <Desc>
+          Pokemon Not Found!
+          <br />
+          Team Rocket is raiding the server!
+        </Desc>
       ) : (
-        data.name && (
-          <Desc>
-            Pokemon Not Found!
-            <br />
-            Team Rocket is raiding the server!
-          </Desc>
-        )
+        ""
       )}
     </CardWrapper>
   );
