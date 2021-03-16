@@ -1,10 +1,12 @@
+// library
 import React from "react";
 import styled from "@emotion/styled";
 import { Skeleton } from "react-loading-skeleton";
 
-
+// components
 import Card from "./Card";
 
+// inline style
 const ListWrapper = styled.div``;
 
 const Bottom = styled.div`

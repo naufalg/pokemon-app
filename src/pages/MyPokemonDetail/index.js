@@ -1,3 +1,4 @@
+// library
 import React, { useEffect, useState, useContext } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
@@ -7,9 +8,12 @@ import {
   BsChevronDoubleLeft,
 } from "react-icons/bs";
 
+// api
+import { getPokemonById } from "../../api/restApi";
+
+// components
 import { AppContext } from "../../context/AppContext";
 import TypeLabel from "../../components/TypeLabel";
-import { getPokemonById } from "../../api/restApi";
 import { removePokemon, capitalize } from "../../utils";
 import {
   ReleaseButton,
@@ -29,15 +33,21 @@ import {
 } from "./myPokemonDetail.style";
 
 export default function MyPokemonDetail() {
+  // prep
   const history = useHistory();
+  const imageUrl =
+    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon";
   const myPokemon = JSON.parse(localStorage.getItem("myPokemon"));
-  const { isMediumSize } = useContext(AppContext);
   const { idx } = useParams();
+  
+  // states
+  const { isMediumSize } = useContext(AppContext);
   const [page, setPage] = useState(idx);
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState({});
   const [othersData, setOthersData] = useState({});
 
+  // functions
   const requestData = async (dataId) => {
     setIsLoading(true);
     setData({});
@@ -54,6 +64,7 @@ export default function MyPokemonDetail() {
     requestData(myPokemon[idx].id);
   }, [idx]);
 
+  // navigation handler
   const handleNav = (type, num) => {
     if (type === "prev") {
       setPage(parseInt(num) - 1);
@@ -63,9 +74,6 @@ export default function MyPokemonDetail() {
       return `/my-pokemon/${parseInt(num) + 1}`;
     }
   };
-
-  const imageUrl =
-    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon";
 
   return (
     <Wrapper>

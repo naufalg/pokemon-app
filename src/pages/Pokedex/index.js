@@ -1,8 +1,12 @@
+// library
 import React, { useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
+
+// api
 import { getPokemonsByPage } from "../../api/restApi";
 
+// components
 import ScrollTop from "../../components/ScrollTop";
 import { AppContext } from "../../context/AppContext";
 import { Wrapper, TitleSection, ListWrapper, APILogo } from "./pokedex.style";
@@ -10,7 +14,9 @@ import { Navbar, Card, PokeballLoad } from "../../components";
 import graphqlLogo from "../../assets/graphql-logo.png";
 
 function Pokedex() {
-  const history = useHistory()
+  // prep
+  const history = useHistory();
+  const myPokemon = JSON.parse(localStorage.getItem("myPokemon"));
   const {
     listItem,
     setListItem,
@@ -20,12 +26,12 @@ function Pokedex() {
     offset,
     setOffset,
   } = useContext(AppContext);
-  const myPokemon = JSON.parse(localStorage.getItem("myPokemon"));
 
   useEffect(() => {
     getData();
   }, []);
 
+  // functions
   const getData = async () => {
     setTimeout(async () => {
       let pokemonsData = await getPokemonsByPage(page, limit);
@@ -35,6 +41,7 @@ function Pokedex() {
     }, 1500);
   };
 
+  // navbar handler
   const navbarData = [
     { tabName: "HOME", link: "/" },
     { tabName: "POKéDEX", link: "/pokedex" },
@@ -57,6 +64,7 @@ function Pokedex() {
           src={graphqlLogo}
         />
       </TitleSection>
+      {/* grid data */}
       {listItem.length > 0 ? (
         <InfiniteScroll
           dataLength={listItem.length}
@@ -76,6 +84,7 @@ function Pokedex() {
           </ListWrapper>
         </InfiniteScroll>
       ) : (
+        // loader
         <PokeballLoad />
       )}
       <ScrollTop />

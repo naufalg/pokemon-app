@@ -1,8 +1,11 @@
+// library
 import React from "react";
 import styled from "@emotion/styled";
 
+// components
 import { typeColor, mediaQuery } from "../globalStyles";
 
+// inline styles
 const LabelWrapper = styled.span`
   font-family: "VT323", monospace;
   text-transform: uppercase;

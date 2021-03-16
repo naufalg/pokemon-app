@@ -1,8 +1,12 @@
+// library
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 
+// api
 import { getPokemonByUrl } from "../../api/restApi";
+
+// components
 import TypeLabel from "../TypeLabel";
 import { capitalize } from "../../utils";
 import {
@@ -15,10 +19,16 @@ import {
 } from "./cardMyPokemon.style";
 
 export default function Card({ passData, url, index }) {
+  // prep
   const history = useHistory();
+  const imageUrl =
+  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon";
+
+  // state
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState({});
 
+  // get function
   const getData = async () => {
     setIsLoading(true);
     setData([]);
@@ -31,8 +41,6 @@ export default function Card({ passData, url, index }) {
     getData();
   }, [url]);
 
-  const imageUrl =
-    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon";
 
   return (
     <CardWrapper

@@ -1,7 +1,11 @@
+// library
 import React from "react";
 import { NavLink, useHistory } from "react-router-dom";
 
+// api
 import { globalUrl } from "../../api/restApi";
+
+// components
 import { CardMyPokemon } from "../../components";
 import { clearPokemon } from "../../utils";
 import Navbar from "../../components/Navbar";
@@ -14,9 +18,11 @@ import {
 } from "./myPokemon.style";
 
 export default function MyPokemon() {
+  // prep
   const history = useHistory();
   const getMyPokemon = JSON.parse(localStorage.getItem("myPokemon"));
 
+  // navbar
   const navbarData = [
     { tabName: "HOME", link: "/" },
     { tabName: "POKéDEX", link: "/pokedex" },

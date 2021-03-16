@@ -1,3 +1,4 @@
+// library
 import React, { useEffect, useState, useContext } from "react";
 import Skeleton from "react-loading-skeleton";
 import { useParams, useHistory } from "react-router-dom";
@@ -7,9 +8,12 @@ import {
   BsChevronDoubleLeft,
 } from "react-icons/bs";
 
+// api
+import { getPokemonById } from "../../api/restApi";
+
+// components
 import NotFound from "../../pages/NotFound";
 import pokeball from "../../assets/pokeball.png";
-import { getPokemonById } from "../../api/restApi";
 import TypeLabel from "../../components/TypeLabel";
 import { AppContext } from "../../context/AppContext";
 import { catchPokemon, capitalize } from "../../utils";
@@ -30,13 +34,18 @@ import {
 } from "./pokemonDetail.style";
 
 export default function PokemonDetail({ isGraph }) {
+  // prep
   const history = useHistory();
-  const { isMediumSize } = useContext(AppContext);
   const { id } = useParams();
+  const { isMediumSize } = useContext(AppContext);
+  const imageUrl =
+    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon";
+
+  // states
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState({});
   const [othersData, setOthersData] = useState({});
-
+  // function
   const requestData = async (dataId) => {
     setIsLoading(true);
     setData({});
@@ -53,6 +62,7 @@ export default function PokemonDetail({ isGraph }) {
     requestData(id);
   }, [id]);
 
+  // navigation handler
   const handleNav = (type, num, isGraph) => {
     if (isGraph === true) {
       if (type === "prev") {
@@ -85,9 +95,6 @@ export default function PokemonDetail({ isGraph }) {
     }
   };
 
-  const imageUrl =
-    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon";
-
   if (parseInt(id) > 898 && parseInt(id) < 10001) {
     return <NotFound />;
   }
@@ -95,6 +102,7 @@ export default function PokemonDetail({ isGraph }) {
   return (
     <Wrapper>
       <br />
+      {/* go back button */}
       <BackButton>
         <BsBackspaceFill
           onClick={() => {
@@ -106,6 +114,7 @@ export default function PokemonDetail({ isGraph }) {
       </BackButton>
       <br />
       <InnerWrapper>
+        {/* go previous pokemon */}
         {parseInt(id) > 1 ? (
           <NavButton
             className="left"
@@ -124,6 +133,7 @@ export default function PokemonDetail({ isGraph }) {
           <NavButton className="left">None</NavButton>
         )}
         <DetailWrapper>
+          {/* pokemon image */}
           <ImageWrapper>
             {!isLoading ? (
               <Name>{`#${data.id} ${capitalize(data.name)}`}</Name>
@@ -149,6 +159,7 @@ export default function PokemonDetail({ isGraph }) {
               <Skeleton height={150} width={250} />
             )}
           </ImageWrapper>
+          {/* detail information */}
           {!isLoading ? (
             <DescWrapper>
               <>
@@ -196,6 +207,7 @@ export default function PokemonDetail({ isGraph }) {
             />
           )}
         </DetailWrapper>
+        {/* next pokemon */}
         <NavButton
           onClick={() => {
             history.push(`${handleNav("next", parseInt(id), isGraph)}`);

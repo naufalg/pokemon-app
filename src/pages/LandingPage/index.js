@@ -1,6 +1,8 @@
+// library
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+// components
 import { FaGithub } from "react-icons/fa";
 import {
   Wrapper,
