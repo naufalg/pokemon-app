@@ -1,6 +1,6 @@
 // library
 import React from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 // api
 import { globalUrl } from "../../api/restApi";
@@ -68,9 +68,9 @@ export default function MyPokemon() {
           ))}
         </ListWrapper>
       ) : (
-        <NavLink to="/pokedex">
+        <Link to="/pokedex">
           <CatchPokemon>Go Catch Pokemon!</CatchPokemon>
-        </NavLink>
+        </Link>
       )}
     </Wrapper>
   );

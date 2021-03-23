@@ -1,6 +1,6 @@
 // library
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // components
 import { FaGithub } from "react-icons/fa";
@@ -16,12 +16,12 @@ export default function LandingPage() {
   return (
     <Wrapper>
       <InnerWrapper>
-        <NavLink to="/pokedex">
-          <NavButton>Pokédex</NavButton>
-        </NavLink>
-        <NavLink to="/my-pokemon">
-          <NavButton>My Pokémon</NavButton>
-        </NavLink>
+        <Link to="/pokedex">
+          <NavButton data-testid="pokedex-nav">Pokédex</NavButton>
+        </Link>
+        <Link to="/my-pokemon">
+          <NavButton data-testid="mypokemon-nav">My Pokémon</NavButton>
+        </Link>
         <SocialIcon
           onClick={() => {
             window.location.href = "https://github.com/naufalg/pokemon-app";

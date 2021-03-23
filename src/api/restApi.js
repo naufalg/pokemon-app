@@ -24,12 +24,7 @@ export const getPokemonsByPage = async (page = 1, limit = 20) => {
     const { data } = await axios.get(`${globalUrl}/?`, {
       params: { limit: limit, offset: offset },
     });
-    const reworkSize = {
-      ...data,
-      height: parseInt(data.height) / 10,
-      weight: parseInt(data.weight) / 10,
-    };
-    return reworkSize;
+    return data;
   } catch (error) {
     console.log(error);
   }

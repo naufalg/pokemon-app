@@ -44,7 +44,7 @@ export default function Card({ listData, url, isCatched, isGraph }) {
 
   
   return (
-    <CardWrapper>
+    <CardWrapper >
       {data.id ? (
         <div
           onClick={() => {

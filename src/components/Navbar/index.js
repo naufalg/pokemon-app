@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { NavbarWrapper, ULists, List, Anchor, Badge } from "./navbar.style";
 
 export default function Navbar({ tabs, activeTab }) {
@@ -9,12 +9,12 @@ export default function Navbar({ tabs, activeTab }) {
         {tabs &&
           tabs.map((item, index) => (
             <List key={index}>
-              <NavLink to={item.link}>
+              <Link to={item.link}>
                 <Anchor>
                   {item.tabName}
                   {item.badge && <Badge>{item.badge}</Badge>}
                 </Anchor>
-              </NavLink>
+              </Link>
             </List>
           ))}
       </ULists>

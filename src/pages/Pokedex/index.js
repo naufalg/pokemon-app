@@ -70,7 +70,7 @@ function Pokedex() {
           dataLength={listItem.length}
           next={getData}
           hasMore={true}
-          loader={<PokeballLoad />}
+          loader={<PokeballLoad data-testid="loader-onscroll" />}
           endMessage={
             <p style={{ textAlign: "center" }}>
               <b>Yay! You have seen it all</b>
@@ -79,13 +79,13 @@ function Pokedex() {
         >
           <ListWrapper>
             {listItem.map((item, idx) => (
-              <Card key={idx} url={item.url} />
+              <Card data-testid="pokemons-card" key={idx} url={item.url} />
             ))}
           </ListWrapper>
         </InfiniteScroll>
       ) : (
         // loader
-        <PokeballLoad />
+        <PokeballLoad data-testid="loader" />
       )}
       <ScrollTop />
     </Wrapper>
