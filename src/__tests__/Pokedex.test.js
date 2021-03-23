@@ -1,15 +1,18 @@
 import React from "react";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, cleanup, fireEvent } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
-import axios from "axios";
+import axiosMock from "axios";
 import { AppProvider } from "../context/AppContext";
 import Pokedex from "../pages/Pokedex";
+import "@testing-library/jest-dom/extend-expect";
+// import userEvent from "@testing-library/user-event";
 
-jest.mock("axios");
+afterEach(cleanup);
+
+// jest.mock("axios");
 
 describe("Pokedex page test", () => {
   test("1st-load pokedex page renders pokeball loader ", async () => {
-
     const { getByTestId } = render(
       <AppProvider>
         <Router>
@@ -28,11 +31,15 @@ describe("Pokedex page test", () => {
       { name: "ivysaur" },
     ];
 
-    axios.get.mockImplementation(() =>
-      Promise.resolve({ data: mockPokemons })
-    );
+    axiosMock.get.mockResolvedValueOnce({
+      data: [{ name: "bulbasaur" }, { name: "ivysaur" }],
+    });
 
-    render(
+    // axios.get.mockImplementation(() =>
+    //   Promise.resolve({ data: mockPokemons })
+    // );
+
+    const { getAllByTestId } = render(
       <AppProvider>
         <Router>
           <Pokedex />
@@ -40,10 +47,26 @@ describe("Pokedex page test", () => {
       </AppProvider>
     );
 
-    await waitFor(() =>
-      expect(screen.getAllByTestId("pokemons-card")).toHaveLength(
-        mockPokemons.length
-      )
-    );
+    const resolveCard = await waitFor(() => getAllByTestId("pokemons-card"));
+
+    expect(resolveCard).toHaveTextContent("bulbasaur");
+
+    // await waitFor(() =>
+    //   expect(screen.getAllByTestId("pokemons-card")).toHaveLength(
+    //     mockPokemons.length
+    //   )
+    // );
   });
+
+  // test("scroll top show on scroll", () => {
+  //   const { getByTestId } = render(
+  //     <AppProvider>
+  //       <Router>
+  //         <Pokedex />
+  //       </Router>
+  //     </AppProvider>
+  //   );
+
+  //   fireEvent.scroll
+  // })
 });

@@ -41,6 +41,13 @@ function Pokedex() {
     }, 1500);
   };
 
+  // const getData = async () => {
+  //   let pokemonsData = await getPokemonsByPage(page, limit);
+  //   setPage(page + 1);
+  //   setOffset(offset + limit);
+  //   setListItem(() => [...listItem, ...pokemonsData.results]);
+  // };
+
   // navbar handler
   const navbarData = [
     { tabName: "HOME", link: "/" },

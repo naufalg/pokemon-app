@@ -54,7 +54,7 @@ function PokedexGraphQl() {
         <>
           <ListWrapper>
             {data.pokemons.results.map((item, idx) => (
-              <Card key={idx} url={item.url} isGraph={true} />
+              <Card data-testid="graphql-card" key={idx} url={item.url} isGraph={true} />
             ))}
           </ListWrapper>
           <PaginationWrapper>
@@ -103,7 +103,7 @@ function PokedexGraphQl() {
           </PaginationWrapper>
         </>
       ) : (
-        <PokeballLoad />
+        <PokeballLoad data-testid="graphql-loader" />
       )}
       {error && <TitleSection>{error}</TitleSection>}
       <ScrollTop />
