@@ -95,6 +95,8 @@ export default function PokemonDetail({ isGraph }) {
     }
   };
 
+  console.log(data);
+
   if (parseInt(id) > 898 && parseInt(id) < 10001) {
     return <NotFound />;
   }
@@ -138,7 +140,12 @@ export default function PokemonDetail({ isGraph }) {
             {!isLoading ? (
               <Name>{`#${data.id} ${capitalize(data.name)}`}</Name>
             ) : (
-              <Skeleton style={{ margin: "15px" }} height={20} width={200} />
+              <Skeleton
+                data-testid="detail-loader"
+                style={{ margin: "15px" }}
+                height={20}
+                width={200}
+              />
             )}
             {!isLoading ? (
               <>
@@ -156,12 +163,12 @@ export default function PokemonDetail({ isGraph }) {
                 </CatchButton>
               </>
             ) : (
-              <Skeleton height={150} width={250} />
+              <Skeleton data-testid="detail-loader" height={150} width={250} />
             )}
           </ImageWrapper>
           {/* detail information */}
           {!isLoading ? (
-            <DescWrapper>
+            <DescWrapper data-testid="detail-infos">
               <>
                 <Desc>
                   <b>Height:</b> &nbsp;
@@ -196,6 +203,7 @@ export default function PokemonDetail({ isGraph }) {
             </DescWrapper>
           ) : (
             <Skeleton
+              data-testid="detail-loader"
               style={{
                 display: "flex",
                 flexDirection: "row",

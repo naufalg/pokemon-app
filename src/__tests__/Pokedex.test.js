@@ -5,7 +5,6 @@ import axiosMock from "axios";
 import { AppProvider } from "../context/AppContext";
 import Pokedex from "../pages/Pokedex";
 import "@testing-library/jest-dom/extend-expect";
-// import userEvent from "@testing-library/user-event";
 
 afterEach(cleanup);
 
